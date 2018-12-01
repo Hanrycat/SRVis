@@ -66,6 +66,14 @@ def plot_rcprodata(df):
                     source=temp_source,
                     legend='FuelTemp')
 
+    hover = HoverTool()
+    hover.tooltips = [
+        ('x', '$x{0.}'),
+        ('y', '$y{0.000}')
+    ]
+
+    susp.add_tools(hover)
+    powertrain.add_tools(hover)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
 
