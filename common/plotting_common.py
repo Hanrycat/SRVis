@@ -1,3 +1,4 @@
+from bokeh.models import DataTable, ColumnDataSource, TableColumn
 from bokeh.plotting import figure
 
 
@@ -9,3 +10,13 @@ def plot_image(path, width=900, height=300):
     p.xaxis.visible = False
     p.yaxis.visible = False
     return p
+
+
+def create_table(data, filename, width=1800, height=300):
+    source = ColumnDataSource(data)
+    column_list =[]
+    for column in source.column_names:
+        column_list.append(TableColumn(field=column, title=column.split('|')[0]))
+
+    data_table = DataTable(source=source, columns=column_list, width=width, height=height)
+    return data_table

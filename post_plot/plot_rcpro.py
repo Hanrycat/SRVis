@@ -6,11 +6,11 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
-from bokeh.palettes import Category20_8 #suppress unresolved import
+from bokeh.palettes import Category20_8  # suppress unresolved import
 from bokeh.transform import linear_cmap
 from datetime import datetime
 
-from common.plotting_common import plot_image
+from common.plotting_common import plot_image, create_table
 
 
 # TODO move finalized code to common.plotting_common.
@@ -28,6 +28,7 @@ def rc_data_parse(logfile):
     output_file('{}_{}.html'.format(logfile[:-4], 'test'))
 
     data = pd.read_csv('..\{}'.format(logfile))
+
     # data = data.dropna()
     return data
 
@@ -38,18 +39,14 @@ def plot_rcprodata(df, filename):
     df_dna = df.dropna()
     temp_source = ColumnDataSource(df_dna)
 
-    susp = figure(width=900, plot_height=300, title='Suspension_{}'.format(filename))
-    powertrain = figure(width=900, plot_height=300, title='Powertrain_{}'.format(filename))
-
-    # TODO modularize column names
-    # Ideally we want this to be
-    # for data_series in subteam
-    #   subteam.line(x=time, y=data_series_header, etc) with automatic color generation
+    susp = figure(width=900, plot_height=300, title='Suspension_{}'.format(filename), x_axis_label='Time')
+    powertrain = figure(width=900, plot_height=300, title='Powertrain_{}'.format(filename), x_axis_label='Time')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
     colors = itertools.cycle(Category20_8)
 
+    # List of headers that correspond to each subteams data
     SUSPENSION = [
         'RearRight|""|0.0|5.0|50',
         'RearLeft|""|0.0|5.0|50',
@@ -77,6 +74,8 @@ def plot_rcprodata(df, filename):
                         source=temp_source,
                         legend=data_series.split('|')[0])
 
+
+
     hover = HoverTool()
     # TODO figure out how to get the tooltips to show like this
     # x=1323
@@ -99,8 +98,9 @@ def plot_rcprodata(df, filename):
     return susp, powertrain
 
 
-def plot_coords(df,filename):
+def plot_coords(df, filename):
     coord_source = ColumnDataSource(df)
+    coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
 
     coord = figure(width=900, plot_height=600, title='GPS Data_{}'.format(filename))
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'
@@ -113,7 +113,6 @@ def plot_coords(df,filename):
     # TODO figure out how to make the points be connected
     # coord.line(x=lat, y=long, source=coord_source, line_width=2, color='red')
 
-    coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
     hover = HoverTool()
     hover.tooltips = [
         ('Lat', '$x{0.000000}'),
@@ -132,19 +131,20 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot = plot_rcprodata(data,filename=logfile)
-            coord_plot = plot_coords(data,filename=logfile)
-
-            sr_logo = plot_image('..\Schulich Racing.png')
+            susp_plot, pt_plot = plot_rcprodata(data, filename=logfile)
+            coord_plot = plot_coords(data, filename=logfile)
+            data_table = create_table(data, filename=logfile)
+            # sr_logo = plot_image('..\Schulich Racing.png')
 
             # TODO decide if we want this behaviour
-            show(row(column(susp_plot, pt_plot, sr_logo), coord_plot))
+            show(column(row(column(susp_plot, pt_plot), coord_plot), data_table))
 
 
 # TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for
 #  track mapping
 # TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
 # TODO start to look into generating laptimes - user interactivity
+#  https://bokeh.pydata.org/en/latest/docs/user_guide/interaction/widgets.html BIG ONE
 #  interactivity is most easily done via server code - simple examples found here
 #  https://bokeh.pydata.org/en/latest/docs/gallery.html
 # TODO return the x/y position of mousepos on left graphs - xpos corresponds to time interval, then highlight the
