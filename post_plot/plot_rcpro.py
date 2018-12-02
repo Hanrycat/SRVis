@@ -28,6 +28,7 @@ def rc_data_parse(logfile):
     output_file('{}_{}.html'.format(logfile[:-4], 'test'))
 
     data = pd.read_csv('..\{}'.format(logfile))
+    data = data.fillna(method='ffill')
 
     # data = data.dropna()
     return data
@@ -36,8 +37,7 @@ def rc_data_parse(logfile):
 # TODO split so that each subteams data can be pulled by calling this function with seperate args
 def plot_rcprodata(df, filename):
     susp_source = ColumnDataSource(df)
-    df_dna = df.dropna()
-    temp_source = ColumnDataSource(df_dna)
+    temp_source = ColumnDataSource(df)
 
     susp = figure(width=900, plot_height=300, title='Suspension_{}'.format(filename), x_axis_label='Time')
     powertrain = figure(width=900, plot_height=300, title='Powertrain_{}'.format(filename), x_axis_label='Time')
@@ -73,8 +73,6 @@ def plot_rcprodata(df, filename):
                         line_color=color,
                         source=temp_source,
                         legend=data_series.split('|')[0])
-
-
 
     hover = HoverTool()
     # TODO figure out how to get the tooltips to show like this
