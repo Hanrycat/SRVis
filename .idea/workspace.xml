@@ -1,8 +1,502 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Added TODOs for future planning">
+    <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Base functionality for scatter plot is implemented">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/plotting_common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SRVis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SRVis.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/metadata.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh-0.13.0.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/code.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/code_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/code_runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/server_lifecycle.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/server_lifecycle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_code.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_code_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_code_runner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_directory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_directory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_server_lifecycle.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/handlers/tests/test_server_lifecycle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/test_application.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/application/tests/test_application.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_websocket.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/tests/test_websocket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/websocket.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/client/websocket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/groups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/hsl.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/hsl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/named.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/named.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/rgb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/rgb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_color.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_groups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_hsl.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_hsl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_named.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_named.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_rgb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_rgb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/colors/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/bootstrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/bootstrap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommand.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/file_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/file_output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/html.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/json.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/png.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/png.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/sampledata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/secret.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/secret.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/serve.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/serve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/static.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/static.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/svg.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/svg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_json.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_json.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_png.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_png.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_sampledata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_secret.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_secret.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_serve.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_serve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_subcommands_package.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_subcommands_package.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_svg.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/subcommands/tests/test_svg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_bootstrap.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_bootstrap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_command_package.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_command_package.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_subcommand.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_subcommand.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/command/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_nb_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_nb_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/autoload_tag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/css_resources.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/css_resources.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/doc_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/doc_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/doc_nb_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/doc_nb_js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/file.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/file.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/js_resources.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/js_resources.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/macros.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/macros.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/notebook_load.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/notebook_load.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/plot_div.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/plot_div.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/root_div.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/root_div.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/script_tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/script_tag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/try_run.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/_templates/try_run.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/enums.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/has_props.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/has_props.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/json_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/json_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/properties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/containers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/descriptor_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/descriptor_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/descriptors.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/descriptors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/override.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/override.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_bases.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_bases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_containers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_descriptor_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_descriptor_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_descriptors.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_descriptors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_override.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/tests/test_override.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property_mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property_mixins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_enums.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_has_props.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_has_props.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_json_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_json_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_properties.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_properties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/tests/test_validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/check.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/check.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/decorators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/errors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/warnings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/validation/warnings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/document.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/document.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/events.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/locking.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/locking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_document.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_document.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_events.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_locking.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/tests/test_locking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/document/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/driving.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/driving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/standalone.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/standalone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_standalone.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_standalone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/embed/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/events.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/export.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/output.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/saving.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/saving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/showing.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/showing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_export.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_export.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_notebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_notebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_output.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_output.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_saving.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_saving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_showing.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_showing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/io/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/layouts.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/layouts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/annotations.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/annotations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/arrow_heads.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/arrow_heads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/axes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/axes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/expressions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/expressions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/formatters.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/formatters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/glyphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/glyphs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/graphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/graphs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/grids.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/grids.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/layouts.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/layouts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/map_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/map_plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/mappers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/mappers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/markers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/markers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/ranges.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/ranges.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/renderers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/renderers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/scales.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/scales.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/selections.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/selections.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/sources.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/sources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_annotations.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_annotations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_axes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_axes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_defaults.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_defaults.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_formatters.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_formatters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_glyphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_glyphs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_graphs.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_graphs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_layouts.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_layouts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_mappers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_mappers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_plots.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_plots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_ranges.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_ranges.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_renderers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_renderers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_sources.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_sources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/test_transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/utils/property_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tests/utils/property_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tickers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tickers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tiles.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tiles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/buttons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/buttons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/groups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/icons.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/icons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/inputs.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/inputs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/markups.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/markups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/panels.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/panels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/sliders.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/sliders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/tables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/tests/test_slider.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/tests/test_slider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/widget.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/widget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/figure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/gmap.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/gmap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/tests/test_figure.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/tests/test_figure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/tests/test_helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/tests/test_helpers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/ack.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/ack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/error.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/error.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/event.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/ok.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/ok.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/patch_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/patch_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/pull_doc_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/pull_doc_reply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/pull_doc_req.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/pull_doc_req.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/push_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/push_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/server_info_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/server_info_reply.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/server_info_req.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/server_info_req.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_patch_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_patch_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_pull_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_pull_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_push_doc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/messages/tests/test_push_doc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/receiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_receiver.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_receiver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_versions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/tests/test_versions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/versions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/protocol/versions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/USHolidays.ics" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/USHolidays.ics" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/auto-mpg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/auto-mpg.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/auto-mpg2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/auto-mpg2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/browsers_nov_2013.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/browsers_nov_2013.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/daylight_warsaw_2013.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/daylight_warsaw_2013.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/elements.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/elements.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/iris.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/iris.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/les_mis.json" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/les_mis.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/numberly.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/numberly.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/obiszow_mtb_xcm.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/obiszow_mtb_xcm.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/olympics2014.json" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/olympics2014.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/percent-bachelors-degrees-women-usa.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/percent-bachelors-degrees-women-usa.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/probly.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/probly.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/sample_geojson.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/sample_geojson.geojson" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/sprint.csv" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/_data/sprint.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/airport_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/airport_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/airports.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/airports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/autompg.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/autompg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/autompg2.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/autompg2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/browsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/browsers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/commits.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/commits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/daylight.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/daylight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/degrees.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/degrees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/gapminder.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/gapminder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/glucose.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/glucose.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/iris.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/iris.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/les_mis.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/les_mis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/movies_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/movies_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/mtb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/mtb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/olympics2014.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/olympics2014.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/perceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/perceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/periodic_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/periodic_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/population.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sample_geojson.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sample_geojson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sea_surface_temperature.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sea_surface_temperature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/sprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_airport_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_airport_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_airports.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_airports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_autompg.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_autompg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_autompg2.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_autompg2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_browsers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_browsers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_commits.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_commits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_daylight.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_daylight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_degrees.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_degrees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_gapminder.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_gapminder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_glucose.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_glucose.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_iris.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_iris.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_les_mis.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_les_mis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_movies_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_movies_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_mtb.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_mtb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_olympics2014.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_olympics2014.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_perceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_perceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_periodic_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_periodic_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_population.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_population.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sample_geojson.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sample_geojson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sea_surface_temperature.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sea_surface_temperature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_sprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_stocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_stocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_unemployment.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_unemployment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_unemployment1948.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_unemployment1948.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_counties.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_counties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_holidays.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_holidays.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_marriages_divorces.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_marriages_divorces.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_us_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_world_cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/tests/test_world_cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/unemployment.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/unemployment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/unemployment1948.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/unemployment1948.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_counties.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_counties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_holidays.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_holidays.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_marriages_divorces.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_marriages_divorces.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_states.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/us_states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/world_cities.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sampledata/world_cities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/application_context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/protocol_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/protocol_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-tables.css" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-tables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-widgets.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-widgets.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh-widgets.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh.css" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/css/bokeh.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-api.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-gl.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-tables.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh-widgets.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.json" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/bokeh.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler/compile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler/dependencies.js" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/static/js/compiler/dependencies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_callbacks.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_callbacks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_session.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_session.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_tornado.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_tornado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/test_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tests/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tornado.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/tornado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/app_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/app_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/autoload_js_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/autoload_js_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/doc_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/doc_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/metadata_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/metadata_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/root_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/root_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/session_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/session_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/static_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/static_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/tests/test_ws.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/tests/test_ws.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/ws.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/server/views/ws.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/collapsible_code_block_epilogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/collapsible_code_block_epilogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/collapsible_code_block_prologue.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/collapsible_code_block_prologue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/color_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/color_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/enum_detail.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/enum_detail.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/gallery_page.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/gallery_page.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/jinja_detail.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/jinja_detail.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/model_detail.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/model_detail.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/options_detail.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/options_detail.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/palette_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/palette_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/palette_group_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/palette_group_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/plot_page.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/plot_page.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/prop_detail.rst" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/_templates/prop_detail.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_autodoc.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_autodoc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_color.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_directive.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_directive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_enum.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_enum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_gallery.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_gallery.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_github.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_github.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_jinja.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_jinja.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_palette.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_palette.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_palette_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_palette_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_prop.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_prop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_releases.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_releases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_sitemap.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/bokeh_sitemap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/collapsible_code_block.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/collapsible_code_block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/example_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/example_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/templates.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/sphinxext/templates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test___init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test___init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test___main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test___main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_client_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_client_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_driving.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_driving.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_events.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_events.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_layouts.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_layouts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_palettes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_palettes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_themes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_themes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_tile_providers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_tile_providers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_widgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tests/test_widgets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/themes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/themes/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/themes/theme.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/themes/theme.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tile_providers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/tile_providers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/transform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/browser.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/browser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/callback_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/callback_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/compiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/datatypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/datatypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/dependencies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/deprecation.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/deprecation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/future.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/future.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/hex.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/hex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/logconfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/logconfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/paths.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/paths.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/plot_utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/sampledata.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/sampledata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/serialization.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/serialization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/session_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/session_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/string.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/string.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/testing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_browser.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_browser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_callback_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_callback_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_compiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_compiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_dependencies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_deprecation.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_deprecation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_hex.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_hex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_serialization.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_serialization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_session_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_session_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_string.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_string.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_tornado.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tests/test_tornado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tornado.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/tornado.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/version.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/warnings.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/warnings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/Scripts/bokeh.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/Scripts/bokeh.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modifiedcsv.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_2018-12-01_15-42-28.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,20 +513,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="170">
+              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/plotting_common.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="277" selection-start-line="277" selection-end-line="277" />
+            <state relative-caret-position="979">
+              <caret line="319" selection-start-line="319" selection-end-line="319" />
             </state>
           </provider>
         </entry>
@@ -49,6 +545,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Spectral</find>
+      <find>Vir</find>
+      <find>Inferno</find>
+      <find>Inferno10</find>
+      <find>category</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -58,6 +558,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/common/plotting_common.py" />
         <option value="$PROJECT_DIR$/post_plot/plot_rcpro.py" />
       </list>
     </option>
@@ -105,6 +606,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.5.0/resources/app/git/cmd/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -173,7 +675,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543776562808</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Base functionality for scatter plot is implemented">
+      <created>1543777391757</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543777391757</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -181,26 +690,27 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16596417" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Python Console" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3286517" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32827735" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.19501625" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="right" id="Run" order="5" visible="true" weight="0.33422175" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,30 +719,41 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cleaning up output" />
     <MESSAGE value="Added TODOs for future planning" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TODOs for future planning" />
+    <MESSAGE value="Base functionality for scatter plot is implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base functionality for scatter plot is implemented" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py">
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="597" column="16" selection-start-line="597" selection-start-column="8" selection-end-line="597" selection-end-column="16" />
+        <state relative-caret-position="979">
+          <caret line="319" selection-start-line="319" selection-end-line="319" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/399365454/itertools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="277" selection-start-line="277" selection-end-line="277" />
+        <state relative-caret-position="299">
+          <caret line="282" column="6" selection-start-line="282" selection-start-column="6" selection-end-line="282" selection-end-column="6" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2202">
+          <caret line="931" column="20" selection-start-line="931" selection-start-column="20" selection-end-line="931" selection-end-column="20" />
+          <folding>
+            <element signature="e#12717#12799#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/plotting_common.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
         </state>
       </provider>
     </entry>
