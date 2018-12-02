@@ -2,8 +2,10 @@ import sys
 import os
 import pandas as pd
 from bokeh.plotting import figure, output_file, show
-from bokeh.layouts import column
+from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
+from bokeh.palettes import Spectral6
+from bokeh.transform import linear_cmap
 from datetime import datetime
 
 from bokeh.models.tools import HoverTool
@@ -19,6 +21,7 @@ def rc_data_parse(logfile):
     # data = data.dropna()
     return data
 
+
 # TODO split so that each subteams data can be pulled by calling this function with seperate args
 def plot_rcprodata(df):
     susp_source = ColumnDataSource(df)
@@ -32,6 +35,8 @@ def plot_rcprodata(df):
     # Ideally we want this to be
     # for data_series in subteam
     #   subteam.line(x=time, y=data_series_header, etc) with automatic color generation
+
+    # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     susp.line(x='Interval|"ms"|0|0|1', y='RearRight|""|0.0|5.0|50',
               line_width=2,
               line_color="red",
@@ -85,7 +90,29 @@ def plot_rcprodata(df):
     powertrain.legend.click_policy = 'hide'
 
     # TODO decide if we want this behaviour
-    show(column(susp, powertrain))
+    # show(column(susp, powertrain))
+    return susp, powertrain
+
+
+def plot_coords(df):
+    coord_source = ColumnDataSource(df)
+
+    coord = figure(width=1000, plot_height=600, title='GPS Data')
+    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+    long = 'Longitude|"Degrees"|-180.0|180.0|10'
+    speed = 'Speed"|"mph"|0.0|150.0|10'
+    # TODO figure out why this is broken
+    # mapper = linear_cmap(field_name='Speed"|"mph"|0.0|150.0|10', palette=Spectral6, low=min(speed), high=max(speed))
+    coord.circle(x=lat, y=long, source=coord_source, size=2, color='purple')
+
+    hover = HoverTool()
+    hover.tooltips = [
+        ('x', '$x{0.}'),
+        ('y', '$y{0.000}')
+    ]
+
+    coord.add_tools(hover)
+    return coord
 
 
 def plot_all(args):
@@ -93,8 +120,13 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            plot_rcprodata(data)
-# TODO add scatter plot for coordinates
+            susp_plot, pt_plot = plot_rcprodata(data)
+            coord_plot = plot_coords(data)
+            # TODO decide if we want this behaviour
+            show(row(column(susp_plot, pt_plot), coord_plot))
+
+
+
 # TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for track mapping
 # TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
 # TODO start to look into generating laptimes - user interactivity
