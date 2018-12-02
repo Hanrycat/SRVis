@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/my_first_graph.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,12 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#4861#4974#0" />
-              </folding>
+            <state relative-caret-position="-459">
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -210,7 +204,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
@@ -230,7 +224,7 @@
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
-      <window_info anchor="right" id="Run" order="5" visible="true" weight="0.33422175" />
+      <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.33422175" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,12 +296,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="33" column="15" lean-forward="true" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#4861#4974#0" />
-          </folding>
+        <state relative-caret-position="-459">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
         </state>
       </provider>
     </entry>

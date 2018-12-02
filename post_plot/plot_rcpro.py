@@ -140,17 +140,21 @@ def plot_all(args):
 
 # TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for
 #  track mapping
+
 # TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
+
 # TODO start to look into generating laptimes - user interactivity
 #  https://bokeh.pydata.org/en/latest/docs/user_guide/interaction/widgets.html BIG ONE
 #  interactivity is most easily done via server code - simple examples found here
 #  https://bokeh.pydata.org/en/latest/docs/gallery.html
+
 # TODO return the x/y position of mousepos on left graphs - xpos corresponds to time interval, then highlight the
 #  coordinate at that timestamp on coord graph. possibly use
 #  https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html
 #  will possibly also use https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#edit-tools
 #  alternately add highlighted column that shows data values on left graphs when hovering on point in scatter
 #  plot https://stackoverflow.com/questions/51775589/bokeh-linking-a-line-plot-and-a-scatter-plot
+#  selector can use spans https://stackoverflow.com/questions/28797330/infinite-horizontal-line-in-bokeh
 
 
 if __name__ == "__main__":
