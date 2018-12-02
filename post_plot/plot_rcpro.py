@@ -10,7 +10,10 @@ from bokeh.models.tools import HoverTool
 
 
 def rc_data_parse(logfile):
-    output_file('{}_{}.html'.format(logfile[:-4], datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
+    # TODO this is final output - iterable
+    # output_file('{}_{}.html'.format(logfile[:-4], datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
+    # TODO use this one during testing
+    output_file('{}_{}.html'.format(logfile[:-4], 'test'))
 
     data = pd.read_csv('..\{}'.format(logfile))
     # data = data.dropna()
