@@ -6,7 +6,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
-from bokeh.palettes import Category20 #suppress unresolved import for now
+from bokeh.palettes import Category20_8 #suppress unresolved import
 from bokeh.transform import linear_cmap
 from datetime import datetime
 
@@ -16,7 +16,11 @@ from common.plotting_common import plot_image
 # TODO move finalized code to common.plotting_common.
 #  Only code that is specific to post_processing log files for
 #  subteam analysis should live here
+
 # instructions and explanations be found here https://programminghistorian.org/en/lessons/visualizing-with-bokeh
+# https://bokeh.pydata.org/en/latest/docs/user_guide.html
+# https://pandas.pydata.org/pandas-docs/stable/index.html
+
 def rc_data_parse(logfile):
     # TODO this is final output - iterable
     # output_file('{}_{}.html'.format(logfile[:-4], datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
@@ -29,13 +33,13 @@ def rc_data_parse(logfile):
 
 
 # TODO split so that each subteams data can be pulled by calling this function with seperate args
-def plot_rcprodata(df):
+def plot_rcprodata(df, filename):
     susp_source = ColumnDataSource(df)
     df_dna = df.dropna()
     temp_source = ColumnDataSource(df_dna)
 
-    susp = figure(width=900, plot_height=300, title='Suspension')
-    powertrain = figure(width=900, plot_height=300, title='Powertrain')
+    susp = figure(width=900, plot_height=300, title='Suspension_{}'.format(filename))
+    powertrain = figure(width=900, plot_height=300, title='Powertrain_{}'.format(filename))
 
     # TODO modularize column names
     # Ideally we want this to be
@@ -44,7 +48,7 @@ def plot_rcprodata(df):
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
-    colors = itertools.cycle(Category20)
+    colors = itertools.cycle(Category20_8)
 
     SUSPENSION = [
         'RearRight|""|0.0|5.0|50',
@@ -95,10 +99,10 @@ def plot_rcprodata(df):
     return susp, powertrain
 
 
-def plot_coords(df):
+def plot_coords(df,filename):
     coord_source = ColumnDataSource(df)
 
-    coord = figure(width=900, plot_height=600, title='GPS Data')
+    coord = figure(width=900, plot_height=600, title='GPS Data_{}'.format(filename))
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'
     long = 'Longitude|"Degrees"|-180.0|180.0|10'
     speed = 'Speed"|"mph"|0.0|150.0|10'
@@ -128,8 +132,8 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot = plot_rcprodata(data)
-            coord_plot = plot_coords(data)
+            susp_plot, pt_plot = plot_rcprodata(data,filename=logfile)
+            coord_plot = plot_coords(data,filename=logfile)
 
             sr_logo = plot_image('..\Schulich Racing.png')
 

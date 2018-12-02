@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="bokeh.palettes.Category20" />
+          <option value="bokeh.palettes.Category20_8" />
         </list>
       </option>
     </inspection_tool>
