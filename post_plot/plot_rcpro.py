@@ -19,7 +19,7 @@ def rc_data_parse(logfile):
     # data = data.dropna()
     return data
 
-
+# TODO split so that each subteams data can be pulled by calling this function with seperate args
 def plot_rcprodata(df):
     susp_source = ColumnDataSource(df)
     df_dna = df.dropna()
@@ -28,6 +28,10 @@ def plot_rcprodata(df):
     susp = figure(width=1000, plot_height=300, title='Suspension')
     powertrain = figure(width=1000, plot_height=300, title='Powertrain')
 
+    # TODO modularize column names
+    # Ideally we want this to be
+    # for data_series in subteam
+    #   subteam.line(x=time, y=data_series_header, etc) with automatic color generation
     susp.line(x='Interval|"ms"|0|0|1', y='RearRight|""|0.0|5.0|50',
               line_width=2,
               line_color="red",
@@ -80,6 +84,7 @@ def plot_rcprodata(df):
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
 
+    # TODO decide if we want this behaviour
     show(column(susp, powertrain))
 
 
@@ -89,7 +94,14 @@ def plot_all(args):
             logfile = file
             data = rc_data_parse(logfile)
             plot_rcprodata(data)
+# TODO add scatter plot for coordinates
+# TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for track mapping
+# TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
+# TODO start to look into generating laptimes - user interactivity
+# TODO add highlighted column that shows data values on left graphs when hovering on point in scatter plot
 
+
+# https://programminghistorian.org/en/lessons/visualizing-with-bokeh
 
 if __name__ == "__main__":
     plot_all(sys.argv)
