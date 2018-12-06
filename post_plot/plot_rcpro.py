@@ -39,8 +39,10 @@ def plot_rcprodata(df, filename):
     susp_source = ColumnDataSource(df)
     temp_source = ColumnDataSource(df)
 
-    susp = figure(width=900, plot_height=300, title='Suspension_{}'.format(filename), x_axis_label='Time')
-    powertrain = figure(width=900, plot_height=300, title='Powertrain_{}'.format(filename), x_axis_label='Time')
+    susp = figure(sizing_mode='scale_both', width=700, height=300, title='Suspension_{}'.format(filename),
+                  x_axis_label='Time')
+    powertrain = figure(sizing_mode='scale_both', width=700, height=300, title='Powertrain_{}'.format(filename),
+                        x_axis_label='Time')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
@@ -86,6 +88,8 @@ def plot_rcprodata(df, filename):
         ('y', '$y{0.000}')
     ]
 
+    susp.sizing_mode = 'scale_width'
+    powertrain.sizing_mode = 'scale_width'
     susp.add_tools(hover)
     powertrain.add_tools(hover)
     susp.legend.click_policy = 'hide'
@@ -100,7 +104,7 @@ def plot_coords(df, filename):
     coord_source = ColumnDataSource(df)
     coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
 
-    coord = figure(width=900, plot_height=600, title='GPS Data_{}'.format(filename))
+    coord = figure(sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'
     long = 'Longitude|"Degrees"|-180.0|180.0|10'
     speed = 'Speed"|"mph"|0.0|150.0|10'
@@ -111,6 +115,7 @@ def plot_coords(df, filename):
     # TODO figure out how to make the points be connected
     # coord.line(x=lat, y=long, source=coord_source, line_width=2, color='red')
 
+    # Tools
     hover = HoverTool()
     hover.tooltips = [
         ('Lat', '$x{0.000000}'),
@@ -118,7 +123,6 @@ def plot_coords(df, filename):
         ('Time', '@Time')
     ]
     hover.point_policy = 'follow_mouse'
-
     coord.add_tools(hover)
 
     return coord

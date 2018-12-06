@@ -5,37 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
+      <change afterPath="$PROJECT_DIR$/rc_pro_server/Autocross last run June 22 18_test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rc_pro_server/plot_rcpro_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SRVis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SRVis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/plotting_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/plotting_common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SRVis$plot_rcpro.coverage" NAME="plot_rcpro Coverage Results" MODIFIED="1543704146886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/post_plot" />
+    <SUITE FILE_PATH="coverage/SRVis$plot_rcpro.coverage" NAME="plot_rcpro Coverage Results" MODIFIED="1544064011735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/post_plot" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+    <leaf>
+      <file leaf-file-name="plot_rcpro.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-459">
-              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+            <state relative-caret-position="68">
+              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/plotting_common.py">
+      <file leaf-file-name="plot_rcpro_server.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rc_pro_server/plot_rcpro_server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -56,6 +60,7 @@
       <find>Inferno</find>
       <find>Inferno10</find>
       <find>category</find>
+      <find>nix</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,6 +72,8 @@
       <list>
         <option value="$PROJECT_DIR$/common/plotting_common.py" />
         <option value="$PROJECT_DIR$/post_plot/plot_rcpro.py" />
+        <option value="$PROJECT_DIR$/rc_pro_server/ex.py" />
+        <option value="$PROJECT_DIR$/rc_pro_server/plot_rcpro_server.py" />
       </list>
     </option>
   </component>
@@ -89,7 +96,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -102,10 +108,16 @@
               <item name="SRVis" type="462c0819:PsiDirectoryNode" />
               <item name="post_plot" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="rc_pro_server" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -115,6 +127,14 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\will\Documents\GitHub\SRVis\rc_pro_server" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\will\Documents\GitHub\SRVis" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -128,7 +148,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.ex">
+    <configuration name="ex" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SRVis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rc_pro_server" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rc_pro_server/ex.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="plot_rcpro" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -147,12 +186,14 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.plot_rcpro" />
+      <item itemvalue="Python.ex" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ex" />
         <item itemvalue="Python.plot_rcpro" />
       </list>
     </recent_temporary>
@@ -200,31 +241,46 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="2" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.2738764" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Python Console" order="3" weight="0.3286517" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3286517" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16644295" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="SciView" order="0" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="4" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.32827735" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="bottom" id="Find" order="8" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="SciView" order="0" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16791044" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="12" />
       <window_info active="true" anchor="right" id="Run" order="5" visible="true" weight="0.33422175" />
+      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" side_tool="true" weight="0.3295302" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.32827735" />
+      <window_info anchor="bottom" id="Python Console" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
+      <window_info anchor="right" id="SciView" order="0" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info id="Favorites" order="0" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,13 +294,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Periodic update of functionality - uses bokeh 1.X now" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/399365454/itertools.py">
+    <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="282" column="6" selection-start-line="282" selection-start-column="6" selection-end-line="282" selection-end-column="6" />
+        <state relative-caret-position="221">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/399365454/itertools.py" />
     <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2202">
@@ -273,9 +330,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="979">
           <caret line="319" selection-start-line="319" selection-end-line="319" />
-          <folding>
-            <element signature="e#891#973#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -283,21 +337,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post_plot/my_first_graph.html" />
+    <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="108" column="76" selection-start-line="108" selection-start-column="68" selection-end-line="108" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/399365454/itertools.py" />
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/palettes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2202">
+          <caret line="931" column="20" selection-start-line="931" selection-start-column="20" selection-end-line="931" selection-end-column="20" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#12717#12799#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/post_plot/my_first_graph.html">
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3009" />
+        <state relative-caret-position="299">
+          <caret line="1120" column="37" selection-start-line="1120" selection-start-column="25" selection-end-line="1120" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/widgets/tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="504" column="6" selection-start-line="504" selection-start-column="6" selection-end-line="504" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/core/property/bases.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="979">
+          <caret line="319" selection-start-line="319" selection-end-line="319" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/post_plot/my_first_graph.html" />
+    <entry file="file://$PROJECT_DIR$/rc_pro_server/Autocross last run June 22 18_test.html">
+      <provider selected="true" editor-type-id="LargeFileEditor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/plotting_common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        <state relative-caret-position="68">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rc_pro_server/ex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+          <folding>
+            <element signature="e#406#439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rc_pro_server/plot_rcpro_server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
         </state>
       </provider>
     </entry>
