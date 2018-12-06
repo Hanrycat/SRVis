@@ -2,6 +2,7 @@ import itertools
 import sys
 import os
 import pandas as pd
+import numpy as np
 from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
@@ -101,15 +102,19 @@ def plot_rcprodata(df, filename):
 
 
 def plot_coords(df, filename):
+    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+    long = 'Longitude|"Degrees"|-180.0|180.0|10'
+    speed = 'Speed|"mph"|0.0|150.0|10'
+    df.loc[df[lat] == 0, lat] = np.nan
+    df.loc[df[long] == 0, long] = np.nan
     coord_source = ColumnDataSource(df)
     coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
 
     coord = figure(sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
-    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
-    long = 'Longitude|"Degrees"|-180.0|180.0|10'
-    speed = 'Speed"|"mph"|0.0|150.0|10'
+
     # TODO figure out why this is broken
     # mapper = linear_cmap(field_name='Speed"|"mph"|0.0|150.0|10', palette=Spectral6, low=min(speed), high=max(speed))
+
     coord.circle(x=lat, y=long, source=coord_source, size=3, color='darkcyan')
 
     # TODO figure out how to make the points be connected
@@ -161,5 +166,5 @@ def plot_all(args):
 #  selector can use spans https://stackoverflow.com/questions/28797330/infinite-horizontal-line-in-bokeh
 
 
-if __name__ == "__main__":
-    plot_all(sys.argv)
+# if __name__ == "__main__":
+#     plot_all(sys.argv)

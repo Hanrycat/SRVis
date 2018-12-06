@@ -6,6 +6,7 @@
         <list>
           <option value="bokeh.palettes.Category20" />
           <option value="bokeh.palettes.Category20_8" />
+          <option value="dict.iteritems" />
         </list>
       </option>
     </inspection_tool>
