@@ -7,7 +7,7 @@ from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
-from bokeh.palettes import Category20_8  # suppress unresolved import
+from bokeh.palettes import Category20_20  # suppress unresolved import
 from bokeh.transform import linear_cmap
 from datetime import datetime
 
@@ -39,17 +39,22 @@ def rc_data_parse(logfile):
 def plot_rcprodata(df, filename):
     susp_source = ColumnDataSource(df)
     temp_source = ColumnDataSource(df)
+    accel_source = ColumnDataSource(df)
 
     susp = figure(sizing_mode='scale_both', width=700, height=300, title='Suspension_{}'.format(filename),
                   x_axis_label='Time')
     powertrain = figure(sizing_mode='scale_both', width=700, height=300, title='Powertrain_{}'.format(filename),
                         x_axis_label='Time')
+    accel = figure(sizing_mode='scale_both', width=700, height=300, title='Accel_{}'.format(filename),
+                      x_axis_label='X', y_axis_label='Y')
+    traction = figure(sizing_mode='scale_both', width=700, height=300, title='Traction Circle{}'.format(filename),
+                   x_axis_label='X', y_axis_label='Y')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
-    colors = itertools.cycle(Category20_8)
+    colors = itertools.cycle(Category20_20)
 
-    # List of headers that correspond to each subteams data
+    # List of headers that correspond to each subteams data will love penis
     SUSPENSION = [
         'RearRight|""|0.0|5.0|50',
         'RearLeft|""|0.0|5.0|50',
@@ -61,6 +66,11 @@ def plot_rcprodata(df, filename):
         'OilPressure|"psi"|0.0|200.0|50',
         'OilTemp|"F"|0|300|1',
         'FuelTemp|"C"|0|1024|1',
+    ]
+    ACCELERATION = [
+        'AccelX|"G"|-3.0|3.0|25',
+        'AccelY|"G"|-3.0|3.0|25',
+        'AccelZ|"G"|-3.0|3.0|25'
     ]
     # print(susp_source.column_names)
     time = 'Interval|"ms"|0|0|1'
@@ -76,6 +86,14 @@ def plot_rcprodata(df, filename):
                         line_color=color,
                         source=temp_source,
                         legend=data_series.split('|')[0])
+    for data_series, color in zip(ACCELERATION, colors):
+        accel.line(x=time, y=data_series,
+                        line_width=1,
+                        line_color=color,
+                        source=accel_source,
+                        legend=data_series.split('|')[0])
+
+    traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=accel_source, size=3, color='firebrick')
 
     hover = HoverTool()
     # TODO figure out how to get the tooltips to show like this
@@ -98,7 +116,7 @@ def plot_rcprodata(df, filename):
 
     # TODO decide if we want this behaviour
     # show(column(susp, powertrain))
-    return susp, powertrain
+    return susp, powertrain, traction, accel
 
 
 def plot_coords(df, filename):
@@ -138,14 +156,14 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot = plot_rcprodata(data, filename=logfile)
+            susp_plot, pt_plot, traction_plot, accel_plot = plot_rcprodata(data, filename=logfile)
             coord_plot = plot_coords(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
-            # sr_logo = plot_image('..\Schulich Racing.png')
+            sr_logo = plot_image('..\Schulich Racing.png')
 
             # TODO decide if we want this behaviour
-            show(column(row(column(susp_plot, pt_plot), coord_plot), data_table))
-
+            show(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table))
+            print('Finished processing')
 
 # TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for
 #  track mapping
@@ -166,5 +184,5 @@ def plot_all(args):
 #  selector can use spans https://stackoverflow.com/questions/28797330/infinite-horizontal-line-in-bokeh
 
 
-# if __name__ == "__main__":
-#     plot_all(sys.argv)
+if __name__ == "__main__":
+    plot_all(sys.argv)
