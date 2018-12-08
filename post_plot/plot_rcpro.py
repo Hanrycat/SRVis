@@ -26,7 +26,7 @@ def rc_data_parse(logfile):
     # TODO this is final output - iterable
     # output_file('{}_{}.html'.format(logfile[:-4], datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
     # TODO use this one during testing
-    output_file('{}_{}.html'.format(logfile[:-4], 'test'))
+    # output_file('{}_{}.html'.format(logfile[:-4], 'test'))
 
     data = pd.read_csv('..\{}'.format(logfile))
     data = data.fillna(method='ffill')
@@ -159,7 +159,7 @@ def plot_all(args):
             susp_plot, pt_plot, traction_plot, accel_plot = plot_rcprodata(data, filename=logfile)
             coord_plot = plot_coords(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
-            sr_logo = plot_image('..\Schulich Racing.png')
+            # sr_logo = plot_image('..\Schulich Racing.png')
 
             # TODO decide if we want this behaviour
             show(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table))
