@@ -7,7 +7,7 @@ import bokeh.plotting as bk
 from bokeh.models import Span
 from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.plotting import figure
-from bokeh.plotting import figure, output_file, show, save
+from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
@@ -27,6 +27,10 @@ from common.plotting_common import plot_image, create_table
 # https://pandas.pydata.org/pandas-docs/stable/index.html
 
 def rc_data_parse(logfile):
+    # TODO this is final output - iterable
+    # output_file('{}_{}.html'.format(logfile[:-4], datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
+    # TODO use this one during testing
+    # output_file('{}_{}.html'.format(logfile[:-4], 'test'))
 
     data = pd.read_csv('..\{}'.format(logfile))
     data = data.fillna(method='ffill')
@@ -97,11 +101,9 @@ def plot_rcprodata(df, filename):
                    name=data_series.split('|')[0])
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=accel_source, size=3,
                     color='firebrick')
-
+    hover = HoverTool()
     susp_hover = HoverTool()
-    powertrain_hover = HoverTool()
-    accel_hover = HoverTool()
-    traction_hover = HoverTool()
+    powertrain_hower = HoverTool()
 
     susp_hover.tooltips = [
         ('Data', '$name'),
@@ -109,31 +111,26 @@ def plot_rcprodata(df, filename):
         ('Volts', '$y{0.000}')
     ]
 
-    powertrain_hover.tooltips = [
+    powertrain_hower.tooltips = [
         ('Data', '$name'),
         ('Time (MS)', '$x{0.}'),
         ('Pressure/Temp', '$y{0.000}')
     ]
-
-    accel_hover.tooltips = [
-        ('Data', '$name'),
-        ('Time (MS)', '$x{0.}'),
-        ('Accel (G)', '$y{0.000}')
-    ]
-
-    traction_hover.tooltips = [
-        ('X Accel (G)', '$x{0.000}'),
-        ('Y Accel (G)', '$y{0.000}')
-    ]
+    #
+    # hover.tooltips = [
+    #     ('x', '$x{0.}'),
+    #     ('y', '$y{0.000}')
+    # ]
 
     susp.sizing_mode = 'scale_width'
     powertrain.sizing_mode = 'scale_width'
     susp.add_tools(susp_hover)
-    powertrain.add_tools(powertrain_hover)
-    accel.add_tools(accel_hover)
-    traction.add_tools(traction_hover)
+    powertrain.add_tools(powertrain_hower)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
+
+    # TODO decide if we want this behaviour
+    # show(column(susp, powertrain))
     return susp, powertrain, traction, accel
 
 
@@ -180,7 +177,7 @@ def plot_all(args):
             # sr_logo = plot_image('..\Schulich Racing.png')
 
             # TODO decide if we want this behaviour
-            save(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table), filename='{}_{}.html'.format(logfile.split('.')[0],'plot'))
+            show(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table))
             print('Finished processing')
 
 
