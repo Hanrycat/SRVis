@@ -4,11 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
-      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_test.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
-    </list>
+    <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,11 +23,8 @@
       <file leaf-file-name="plot_rcpro.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="158" column="57" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="57" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -333,7 +326,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
@@ -342,7 +334,7 @@
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.32954547" />
       <window_info anchor="bottom" id="Run" order="13" weight="0.33286518" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.3272472" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3852349" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2946309" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="SciView" order="0" />
@@ -408,9 +400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -609,11 +598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="158" column="57" selection-start-line="158" selection-start-column="47" selection-end-line="158" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
