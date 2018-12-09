@@ -134,6 +134,7 @@ def plot_rcprodata(df, filename):
     traction.add_tools(traction_hover)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
+    # epic
     return susp, powertrain, traction, accel
 
 
