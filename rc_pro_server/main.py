@@ -117,6 +117,7 @@ for data_series, color in zip(POWERTRAIN, colors):
 
 c = coord.circle(x='Latitude', y='Longitude', source=default_source, size=3, color='darkcyan')
 ds = c.data_source
+ds = l.data_source
 current_filename = coord.title
 # TODO Add datatable
 # TODO Add box selection/highlighting
