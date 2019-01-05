@@ -11,6 +11,7 @@ import pandas as pd
 csv_data = pd.read_csv('laps.csv')
 csv_data = csv_data.dropna()
 csv_data = csv_data.reset_index(drop=False)
+
 csv_x = csv_data['Long'] * -1
 csv_y = csv_data['Lat'] * -1
 csv_times = csv_data['Time']
@@ -38,7 +39,7 @@ r3 = p.circle(x='x', y='y', source=centroid_source, color='navy', radius=0.00002
 r4 = p.circle(x='x', y='y', source=start_finish, color='green', alpha=0.5, line_color='black', radius=0.00002)
 r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
 cur_time = 0
-step = 1
+step = 2
 prev_laps = 0
 lap_length = 0
 true_lap = -1
@@ -57,10 +58,10 @@ def update():
     ds2['x'].append(csv_x[cur_time])
     ds2['y'].append(csv_y[cur_time])
     cur_time += step
-    if lap_length != 0:
-        source.stream(ds1,lap_length)
-    else:
-        source.stream(ds1)
+    # if lap_length != 0:
+    #     source.stream(ds1,lap_length)
+    # else:
+    source.stream(ds1)
     live_source.stream(ds2, 1)
 
     ds3['x'].append(centroidnp(np.asarray(csv_x[:cur_time])))
@@ -76,7 +77,7 @@ def update():
         if laps >0:
             true_lap = true_lap + 1
             print('Lap {}: {}'.format(true_lap, ((crossings[laps - 1][0]) - (crossings[laps - 2][0])) / 1000))
-            lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/100)
+            lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/50)
             print(lap_length)
     prev_laps = laps
     timeout += 1
@@ -89,7 +90,7 @@ def update():
 curdoc().add_root(p)
 
 # Add a periodic callback to be run every 500 milliseconds
-curdoc().add_periodic_callback(update, 16)
+curdoc().add_periodic_callback(update, 80)
 
 
 def is_left(x1, y1, x2, y2, x3, y3):
