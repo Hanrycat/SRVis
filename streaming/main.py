@@ -7,6 +7,8 @@ import random
 import datetime as dt
 import numpy as np
 import pandas as pd
+from bokeh.palettes import inferno
+from bokeh.transform import linear_cmap
 
 csv_data = pd.read_csv('laps.csv')
 csv_data = csv_data.dropna()
@@ -15,9 +17,10 @@ csv_data = csv_data.reset_index(drop=False)
 csv_x = csv_data['Long'] * -1
 csv_y = csv_data['Lat'] * -1
 csv_times = csv_data['Time']
+csv_speed = csv_data['Time']%100
 
 source = ColumnDataSource(dict(
-    x=[], y=[]
+    x=[], y=[], color = []
 ))
 
 live_source = ColumnDataSource(dict(
@@ -34,7 +37,7 @@ start_finish = ColumnDataSource(dict(
 
 p = figure(plot_width=800, plot_height=700)
 
-r2 = p.line(x='x', y='y', source=source, line_color='black', line_width=5)
+r2 = p.circle(x='x', y='y', source=source, color='color', radius=0.00001)
 r3 = p.circle(x='x', y='y', source=centroid_source, color='navy', radius=0.00002)
 r4 = p.circle(x='x', y='y', source=start_finish, color='green', alpha=0.5, line_color='black', radius=0.00002)
 r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
@@ -47,13 +50,14 @@ timeout = 0
 
 def update():
     global cur_time, step, source, prev_laps, lap_length, true_lap, timeout
-    ds1 = dict(x=[], y=[])
+    ds1 = dict(x=[], y=[], color=[])
     ds2 = dict(x=[], y=[])
     ds3 = dict(x=[], y=[])
     ds4 = dict(x=[], y=[])
 
     ds1['x'].append(csv_x[cur_time])
     ds1['y'].append(csv_y[cur_time])
+    ds1['color'].append(get_color_from_speed(csv_speed[cur_time]))
 
     ds2['x'].append(csv_x[cur_time])
     ds2['y'].append(csv_y[cur_time])
@@ -78,7 +82,6 @@ def update():
             true_lap = true_lap + 1
             print('Lap {}: {}'.format(true_lap, ((crossings[laps - 1][0]) - (crossings[laps - 2][0])) / 1000))
             lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/50)
-            print(lap_length)
     prev_laps = laps
     timeout += 1
 
@@ -96,6 +99,11 @@ curdoc().add_periodic_callback(update, 80)
 def is_left(x1, y1, x2, y2, x3, y3):
     return ((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1))
 
+def get_color_from_speed(speed):
+    mapper = linear_cmap(field_name='Speed|"mph"|0.0|150.0|10', palette=inferno(87),
+                         # low_color='#ffffff', high_color='#ffffff',
+                         low=13, high=100)
+    return mapper[speed]
 
 def centroidnp(arr):
     length = arr.shape[0]

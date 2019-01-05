@@ -11,12 +11,11 @@ from bokeh.plotting import figure, output_file, show, save
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
-from bokeh.palettes import Category20_20  # suppress unresolved import
+from bokeh.palettes import Category20_20  # suppress unresolved import\
+from bokeh.palettes import inferno
 from bokeh.transform import linear_cmap
 from datetime import datetime
-
 from common.plotting_common import plot_image, create_table
-
 
 # TODO move finalized code to common.plotting_common.
 #  Only code that is specific to post_processing log files for
@@ -35,25 +34,7 @@ def rc_data_parse(logfile):
     return data
 
 
-# TODO split so that each subteams data can be pulled by calling this function with seperate args
 def plot_rcprodata(df, filename):
-    susp_source = ColumnDataSource(df)
-    temp_source = ColumnDataSource(df)
-    accel_source = ColumnDataSource(df)
-
-    susp = figure(sizing_mode='scale_both', width=700, height=300, title='Suspension_{}'.format(filename),
-                  x_axis_label='Time')
-    powertrain = figure(sizing_mode='scale_both', width=700, height=300, title='Powertrain_{}'.format(filename),
-                        x_axis_label='Time')
-    accel = figure(sizing_mode='scale_both', width=700, height=300, title='Accel_{}'.format(filename),
-                   x_axis_label='X', y_axis_label='Y')
-    traction = figure(sizing_mode='scale_both', width=700, height=300, title='Traction Circle{}'.format(filename),
-                      x_axis_label='X', y_axis_label='Y')
-
-    # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
-    # create a color iterator
-    colors = itertools.cycle(Category20_20)
-
     # List of headers that correspond to each subteams data
     SUSPENSION = [
         'RearRight|""|0.0|5.0|50',
@@ -72,30 +53,38 @@ def plot_rcprodata(df, filename):
         'AccelY|"G"|-3.0|3.0|25',
         'AccelZ|"G"|-3.0|3.0|25'
     ]
-    # print(susp_source.column_names)
+    susp = get_data(df, filename, 'Suspension_{}', SUSPENSION)
+    powertrain = get_data(df, filename, 'Powertrain_{}', POWERTRAIN)
+    accel = get_data(df, filename, 'Accel_{}', ACCELERATION)
+    traction = get_data(df, filename, 'Traction Circle{}', '')
+
+    # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
+    # create a color iterator
+    colors = itertools.cycle(Category20_20)
+    source = ColumnDataSource(df)
     time = 'Interval|"ms"|0|0|1'
     for data_series, color in zip(SUSPENSION, colors):
         susp.line(x=time, y=data_series,
                   line_width=2,
                   line_color=color,
-                  source=susp_source,
+                  source=source,
                   legend=data_series.split('|')[0],
                   name=data_series.split('|')[0])
     for data_series, color in zip(POWERTRAIN, colors):
         powertrain.line(x=time, y=data_series,
                         line_width=2,
                         line_color=color,
-                        source=temp_source,
+                        source=source,
                         legend=data_series.split('|')[0],
                         name=data_series.split('|')[0])
     for data_series, color in zip(ACCELERATION, colors):
         accel.line(x=time, y=data_series,
                    line_width=1,
                    line_color=color,
-                   source=accel_source,
+                   source=source,
                    legend=data_series.split('|')[0],
-                   name=data_series.split('|')[0])
-    traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=accel_source, size=3,
+                   name=data_series.split('|')[0]),
+    traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=source, size=3,
                     color='firebrick')
 
     susp_hover = HoverTool()
@@ -137,6 +126,18 @@ def plot_rcprodata(df, filename):
     # epic
     return susp, powertrain, traction, accel
 
+def get_data(df, filename, title_string, data_legend):
+
+    data_type_source = ColumnDataSource(df)
+    if data_legend == 'Suspension_{}' or data_legend == 'Powertrain_{}':
+        data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+                           x_axis_label='Time')
+    else:
+        data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+               x_axis_label='Time')
+
+    return data_type
+
 
 def plot_coords(df, filename):
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'
@@ -144,18 +145,23 @@ def plot_coords(df, filename):
     speed = 'Speed|"mph"|0.0|150.0|10'
     df.loc[df[lat] == 0, lat] = np.nan
     df.loc[df[long] == 0, long] = np.nan
+    df[lat] = -df[lat]
+    df[long] = -df[long]
+
     coord_source = ColumnDataSource(df)
     coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
 
     coord = figure(sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
 
-    # TODO figure out why this is broken
-    # mapper = linear_cmap(field_name='Speed"|"mph"|0.0|150.0|10', palette=Spectral6, low=min(speed), high=max(speed))
+    df = df.dropna()
+    mapper = linear_cmap(field_name='Speed|"mph"|0.0|150.0|10', palette=inferno(max(df[speed])-min(df[speed])),
+                         # low_color='#ffffff', high_color='#ffffff',
+                         low=min(df[speed] + 13), high=max(df[speed]) - 27)
 
-    coord.circle(x=lat, y=long, source=coord_source, size=3, color='darkcyan')
+    coord.circle(x=long, y=lat, source=coord_source, size=3, color=mapper)
 
     # TODO figure out how to make the points be connected
-    # coord.line(x=lat, y=long, source=coord_source, line_width=2, color='red')
+    # coord.line(x=long, y=lat, source=coord_source, line_width=2, color='red')
 
     # Tools
     hover = HoverTool()
