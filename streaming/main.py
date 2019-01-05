@@ -32,10 +32,11 @@ start_finish = ColumnDataSource(dict(
 ))
 
 p = figure(plot_width=800, plot_height=700)
+
+r2 = p.line(x='x', y='y', source=source, line_color='black', line_width=5)
+r3 = p.circle(x='x', y='y', source=centroid_source, color='navy', radius=0.00002)
+r4 = p.circle(x='x', y='y', source=start_finish, color='green', alpha=0.5, line_color='black', radius=0.00002)
 r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
-r2 = p.line(x='x', y='y', source=source, line_color='navy', line_width=3)
-r3 = p.circle(x='x', y='y', source=centroid_source, color='green', radius=0.00002)
-r4 = p.circle(x='x', y='y', source=start_finish, color='white', alpha=0.5, line_color='black', radius=0.00003)
 cur_time = 0
 step = 1
 prev_laps = 0
@@ -70,12 +71,13 @@ def update():
     if cur_time >= csv_times.__len__():
         sys.exit()
     laps, crossings = check_lapcounter(source,cur_time)
-    if abs(laps-prev_laps) == 1 and timeout > 200: #TODO fix that it prints laps twice
+    if abs(laps-prev_laps) == 1 and timeout > 200:
         timeout=0
         if laps >0:
             true_lap = true_lap + 1
             print('Lap {}: {}'.format(true_lap, ((crossings[laps - 1][0]) - (crossings[laps - 2][0])) / 1000))
-        lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/50)
+            lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/100)
+            print(lap_length)
     prev_laps = laps
     timeout += 1
 
