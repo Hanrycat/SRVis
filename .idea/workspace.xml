@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
+      <change beforePath="$PROJECT_DIR$/bokeh-venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh-venv/pip-selfcheck.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streaming/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/streaming/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/streaming/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            <state relative-caret-position="153">
+              <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -37,11 +38,8 @@
       <file leaf-file-name="plot_rcpro.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="106">
+              <caret line="155" column="16" selection-start-line="155" selection-start-column="12" selection-end-line="155" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -65,6 +63,8 @@
       <find>nix</find>
       <find>Super</find>
       <find>output</find>
+      <find>dropn</find>
+      <find>drop</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -100,10 +100,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="607" />
-    <option name="y" value="-23" />
-    <option name="width" value="978" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="952" />
+    <option name="width" value="977" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -370,16 +369,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
+    <frame x="762" y="0" width="781" height="840" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3286517" />
+      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3272472" />
       <window_info anchor="bottom" id="Run" order="13" weight="0.33224222" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.35814607" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.27982953" />
       <window_info content_ui="combo" id="Project" order="1" weight="0.5914127" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" />
@@ -671,18 +669,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="106">
+          <caret line="155" column="16" selection-start-line="155" selection-start-column="12" selection-end-line="155" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/streaming/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="153">
+          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

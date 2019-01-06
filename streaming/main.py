@@ -10,6 +10,27 @@ import pandas as pd
 from bokeh.palettes import inferno
 from bokeh.transform import linear_cmap
 
+
+import redis
+import json
+import csv
+
+
+host = "hilmi.ddns.net"
+port = 20114
+db = 0
+password = "schulichracing14"
+channel = "main-channel"
+r = redis.Redis(
+    host=host,
+    port=port,
+    password=password)
+ps = r.pubsub()
+ps.subscribe(channel)
+
+
+
+
 csv_data = pd.read_csv('laps.csv')
 csv_data = csv_data.dropna()
 csv_data = csv_data.reset_index(drop=False)
@@ -17,10 +38,9 @@ csv_data = csv_data.reset_index(drop=False)
 csv_x = csv_data['Long'] * -1
 csv_y = csv_data['Lat'] * -1
 csv_times = csv_data['Time']
-csv_speed = csv_data['Time']%100
 
 source = ColumnDataSource(dict(
-    x=[], y=[], color = []
+    x=[], y=[]
 ))
 
 live_source = ColumnDataSource(dict(
@@ -37,12 +57,13 @@ start_finish = ColumnDataSource(dict(
 
 p = figure(plot_width=800, plot_height=700)
 
-r2 = p.circle(x='x', y='y', source=source, color='color', radius=0.00001)
-r3 = p.circle(x='x', y='y', source=centroid_source, color='navy', radius=0.00002)
-r4 = p.circle(x='x', y='y', source=start_finish, color='green', alpha=0.5, line_color='black', radius=0.00002)
+r2 = p.line(x='x', y='y', source=source, color='black',line_width=3)
+# r3 = p.circle(x='x', y='y', source=centroid_source, color='navy', radius=0.00002)
+# r4 = p.circle(x='x', y='y', source=start_finish, color='green', alpha=0.5, line_color='black', radius=0.00002)
 r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
+# test = p.circle(x=41,y=-96.767548)
 cur_time = 0
-step = 2
+step = 1
 prev_laps = 0
 lap_length = 0
 true_lap = -1
@@ -50,50 +71,63 @@ timeout = 0
 
 def update():
     global cur_time, step, source, prev_laps, lap_length, true_lap, timeout
-    ds1 = dict(x=[], y=[], color=[])
-    ds2 = dict(x=[], y=[])
-    ds3 = dict(x=[], y=[])
-    ds4 = dict(x=[], y=[])
+    ds1 = dict(x=[], y=[])
+    coords = dict(x=[],y=[])
+    # ds2 = dict(x=[], y=[])
+    # ds3 = dict(x=[], y=[])
+    # ds4 = dict(x=[], y=[])
 
-    ds1['x'].append(csv_x[cur_time])
-    ds1['y'].append(csv_y[cur_time])
-    ds1['color'].append(get_color_from_speed(csv_speed[cur_time]))
+    message = ps.get_message()  # Checks for message
+    if not message or message['data'] == 1:
+        print('shit went south')
+        pass
+    else:
+        data = message['data'].decode('utf-8')
+        data_string = json.loads(data)
+        df = pd.DataFrame(data_string, index=[0])
+        ds1['x'].append(df['Long'].values[0])
+        ds1['y'].append(df['Lat'].values[0])
 
-    ds2['x'].append(csv_x[cur_time])
-    ds2['y'].append(csv_y[cur_time])
-    cur_time += step
-    # if lap_length != 0:
-    #     source.stream(ds1,lap_length)
-    # else:
-    source.stream(ds1)
-    live_source.stream(ds2, 1)
+        if not ds1['x'][-1] == '':
+            coords['x'].append(-1*float(ds1['x'][-1]))
+        if not ds1['y'][-1] == '':
+            coords['y'].append(-1*float(ds1['y'][-1]))
 
-    ds3['x'].append(centroidnp(np.asarray(csv_x[:cur_time])))
-    ds3['y'].append(centroidnp(np.asarray(csv_y[:cur_time])))
-    centroid_source.stream(ds3, 1)
+        live_source.stream(coords,1)
+        source.stream(coords)
+
+        # print(source.data)
+        # print(live_source.data)
+        cur_time += step
+        # if lap_length != 0:
+        #     source.stream(ds1,lap_length)
+        # else:
+        # live_source.stream(ds1, 1)
+
+        # ds3['x'].append(centroidnp(np.asarray(source.data['Lat'])))
+        # ds3['y'].append(centroidnp(np.asarray(source.data['Long'])))
+        # centroid_source.stream(ds3, 1)
 
 
-    if cur_time >= csv_times.__len__():
-        sys.exit()
-    laps, crossings = check_lapcounter(source,cur_time)
-    if abs(laps-prev_laps) == 1 and timeout > 200:
-        timeout=0
-        if laps >0:
-            true_lap = true_lap + 1
-            print('Lap {}: {}'.format(true_lap, ((crossings[laps - 1][0]) - (crossings[laps - 2][0])) / 1000))
-            lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/50)
-    prev_laps = laps
-    timeout += 1
-
-    ds4['x'].append((crossings[laps - 1][1]))
-    ds4['y'].append((crossings[laps - 1][2]))
-    start_finish.stream(ds4,20)
+        # laps, crossings = check_lapcounter(source,cur_time)
+        # if abs(laps-prev_laps) == 1 and timeout > 200:
+        #     timeout=0
+        #     if laps >0:
+        #         true_lap = true_lap + 1
+        #         print('Lap {}: {}'.format(true_lap, ((crossings[laps - 1][0]) - (crossings[laps - 2][0])) / 1000))
+        #         lap_length=int(((crossings[laps - 1][0]) - (crossings[laps - 2][0]))/50)
+        # prev_laps = laps
+        # timeout += 1
+        #
+        # ds4['x'].append((crossings[laps - 1][1]))
+        # ds4['y'].append((crossings[laps - 1][2]))
+        # start_finish.stream(ds4,20)
 
 
 curdoc().add_root(p)
 
 # Add a periodic callback to be run every 500 milliseconds
-curdoc().add_periodic_callback(update, 80)
+curdoc().add_periodic_callback(update, 0)
 
 
 def is_left(x1, y1, x2, y2, x3, y3):
