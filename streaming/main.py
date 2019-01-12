@@ -48,7 +48,8 @@ start_finish = ColumnDataSource(dict(
 
 p = figure(plot_width=800, plot_height=700)
 
-r2 = p.line(x='x', y='y', source=source, color='black', line_width=3)r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
+r2 = p.line(x='x', y='y', source=source, color='black', line_width=3)
+r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
 
 cur_time = 0
 step = 1
