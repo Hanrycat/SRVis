@@ -1,17 +1,9 @@
-import sys
+import json
 
+import pandas as pd
+import redis
 from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, curdoc
-from bokeh.driving import linear
-import random
-import datetime as dt
-import numpy as np
-import pandas as pd
-from bokeh.palettes import inferno
-from bokeh.transform import linear_cmap
-
-import redis
-import json
 
 host = "hilmi.ddns.net"
 port = 20114
@@ -78,11 +70,11 @@ def update():
         try:
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
-        except ValueError as e:
+        except ValueError:
             pass  # failed to convert because values in were null
 
         if abs(current_long) > 1 and not current_long == previous_long and \
-            abs(current_lat) > 1 and not current_lat == previous_lat:
+                abs(current_lat) > 1 and not current_lat == previous_lat:
             coords['x'].append(-1 * current_long)
             previous_long = current_long
 
@@ -93,6 +85,7 @@ def update():
         source.stream(coords)
 
         cur_time += step
+
 
 curdoc().add_root(p)
 
