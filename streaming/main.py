@@ -26,10 +26,14 @@ track_source = ColumnDataSource(dict(
     x=[], y=[]
 ))
 
+car_source = ColumnDataSource(dict(
+    x=[], y=[]
+))
+
 p = figure(plot_width=800, plot_height=700)
 
 r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)
-r1 = p.circle(x='x', y='y', source=track_source, color='firebrick', radius=0.00002)
+r1 = p.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
 
 cur_time = 0
 step = 1
@@ -58,6 +62,7 @@ def update():
         try:
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
+            print(current_long)
         except ValueError:
             pass  # failed to convert because values in were null
 
@@ -69,7 +74,8 @@ def update():
             coords['y'].append(-1 * current_lat)
             previous_lat = current_lat
 
-        track_source.stream(coords, 1)
+        track_source.stream(coords)
+        car_source.stream(coords, 1)
 
         cur_time += step
 
