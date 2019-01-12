@@ -62,7 +62,6 @@ def update():
         try:
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
-            print(current_long)
         except ValueError:
             pass  # failed to convert because values in were null
 
