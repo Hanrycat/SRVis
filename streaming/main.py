@@ -22,26 +22,14 @@ LATITUDE = 'Latitude|"Degrees"|-180.0|180.0|10'
 SPEED = 'Speed|"mph"|0.0|150.0|10'
 INTERVAL = 'Interval|"ms"|0|0|1'
 
-source = ColumnDataSource(dict(
-    x=[], y=[]
-))
-
-live_source = ColumnDataSource(dict(
-    x=[], y=[]
-))
-
-centroid_source = ColumnDataSource(dict(
-    x=[], y=[]
-))
-
-start_finish = ColumnDataSource(dict(
+track_source = ColumnDataSource(dict(
     x=[], y=[]
 ))
 
 p = figure(plot_width=800, plot_height=700)
 
-r2 = p.line(x='x', y='y', source=source, color='black', line_width=3)
-r1 = p.circle(x='x', y='y', source=live_source, color='firebrick', radius=0.00002)
+r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)
+r1 = p.circle(x='x', y='y', source=track_source, color='firebrick', radius=0.00002)
 
 cur_time = 0
 step = 1
@@ -54,14 +42,14 @@ previous_long = 0
 
 
 def update():
-    global cur_time, step, source, prev_laps, lap_length, true_lap, timeout, previous_lat, previous_long
+    global cur_time, step, previous_lat, previous_long
     coords = dict(x=[], y=[])
     current_lat = 0
     current_long = 0
 
     message = ps.get_message()  # Checks for message
     if not message or message['data'] == 1:
-        print('shit went south')
+        print(r'Shit\'s fucked, yo! Message was: {}'.format(message))
         pass
     else:
         data = message['data'].decode('utf-8')
@@ -81,8 +69,7 @@ def update():
             coords['y'].append(-1 * current_lat)
             previous_lat = current_lat
 
-        live_source.stream(coords, 1)
-        source.stream(coords)
+        track_source.stream(coords, 1)
 
         cur_time += step
 
