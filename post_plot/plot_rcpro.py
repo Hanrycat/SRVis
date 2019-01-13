@@ -134,10 +134,9 @@ def get_data(df, filename, title_string, data_legend):
                            x_axis_label='Time')
     else:
         data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
-               x_axis_label='Time')
+                           x_axis_label='Time')
 
     return data_type
-
 
 def plot_coords(df, filename):
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'

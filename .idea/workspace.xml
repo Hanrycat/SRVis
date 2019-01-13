@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_plot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_plot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streaming/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/streaming/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/streaming/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            <state relative-caret-position="51">
+              <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -34,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plot_rcpro.py" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2346">
@@ -83,9 +86,9 @@
         <option value="$PROJECT_DIR$/common/plotting_common.py" />
         <option value="$PROJECT_DIR$/test_env/test.py" />
         <option value="$PROJECT_DIR$/test_env/loading_data.py" />
-        <option value="$PROJECT_DIR$/post_plot/plot_rcpro.py" />
         <option value="$PROJECT_DIR$/rc_pro_server/main.py" />
         <option value="$PROJECT_DIR$/streaming/Test1.py" />
+        <option value="$PROJECT_DIR$/post_plot/plot_rcpro.py" />
         <option value="$PROJECT_DIR$/streaming/main.py" />
       </list>
     </option>
@@ -112,7 +115,45 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="post_plot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="rc_pro_server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="streaming" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
+              <item name="test_env" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -146,7 +187,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.plot_rcpro">
+  <component name="RunManager" selected="Python.main">
     <configuration name="loading_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,6 +206,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -184,6 +228,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="plot_rcpro" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -203,6 +250,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="plot_rcpro_server" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -222,6 +272,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -241,6 +294,9 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.plot_rcpro" />
@@ -330,11 +386,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3065476" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.10474632" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.3272472" />
@@ -354,6 +414,7 @@
       <window_info content_ui="combo" id="Project" order="1" weight="0.5914127" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
@@ -400,20 +461,12 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cleaning up output" />
     <MESSAGE value="Added TODOs for future planning" />
     <MESSAGE value="Base functionality for scatter plot is implemented" />
     <MESSAGE value="Periodic update of functionality - uses bokeh 1.X now" />
     <option name="LAST_COMMIT_MESSAGE" value="Periodic update of functionality - uses bokeh 1.X now" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="4" />
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/sampledata.py">
@@ -705,10 +758,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/pandas/core/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="689">
+          <caret line="843" column="8" selection-start-line="843" selection-start-column="8" selection-end-line="843" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/1666347803/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-938">
+          <caret line="5069" column="23" lean-forward="true" selection-start-line="5069" selection-start-column="23" selection-end-line="5069" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2346">
-          <caret line="155" column="16" selection-start-line="155" selection-start-column="12" selection-end-line="155" selection-end-column="16" />
+        <state relative-caret-position="170">
+          <caret line="154" column="20" lean-forward="true" selection-start-line="154" selection-start-column="20" selection-end-line="154" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
