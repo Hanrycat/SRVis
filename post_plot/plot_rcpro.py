@@ -17,6 +17,7 @@ from bokeh.transform import linear_cmap
 from datetime import datetime
 from common.plotting_common import plot_image, create_table
 
+
 # TODO move finalized code to common.plotting_common.
 #  Only code that is specific to post_processing log files for
 #  subteam analysis should live here
@@ -53,39 +54,48 @@ def plot_rcprodata(df, filename):
         'AccelY|"G"|-3.0|3.0|25',
         'AccelZ|"G"|-3.0|3.0|25'
     ]
-    susp = get_data(df, filename, 'Suspension_{}', SUSPENSION)
-    powertrain = get_data(df, filename, 'Powertrain_{}', POWERTRAIN)
-    accel = get_data(df, filename, 'Accel_{}', ACCELERATION)
-    traction = get_data(df, filename, 'Traction Circle{}', '')
+    susp = create_figure(filename, 'Suspension')
+    powertrain = create_figure(filename, 'Powertrain')
+    accel = create_figure(filename, 'Accel')
+    traction = create_figure(filename, 'Traction')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
     colors = itertools.cycle(Category20_20)
     source = ColumnDataSource(df)
     time = 'Interval|"ms"|0|0|1'
-    for data_series, color in zip(SUSPENSION, colors):
-        susp.line(x=time, y=data_series,
-                  line_width=2,
-                  line_color=color,
-                  source=source,
-                  legend=data_series.split('|')[0],
-                  name=data_series.split('|')[0])
-    for data_series, color in zip(POWERTRAIN, colors):
-        powertrain.line(x=time, y=data_series,
-                        line_width=2,
-                        line_color=color,
-                        source=source,
-                        legend=data_series.split('|')[0],
-                        name=data_series.split('|')[0])
-    for data_series, color in zip(ACCELERATION, colors):
-        accel.line(x=time, y=data_series,
-                   line_width=1,
-                   line_color=color,
-                   source=source,
-                   legend=data_series.split('|')[0],
-                   name=data_series.split('|')[0]),
+    # for data_series, color in zip(SUSPENSION, colors):
+    #     susp.line(x=time, y=data_series,
+    #               line_width=2,
+    #               line_color=color,
+    #               source=source,
+    #               legend=data_series.split('|')[0],
+    #               name=data_series.split('|')[0])
+    # for data_series, color in zip(POWERTRAIN, colors):
+    #     powertrain.line(x=time, y=data_series,
+    #                     line_width=2,
+    #                     line_color=color,
+    #                     source=source,
+    #                     legend=data_series.split('|')[0],
+    #                     name=data_series.split('|')[0])
+    # for data_series, color in zip(ACCELERATION, colors):
+    #     accel.line(x=time, y=data_series,
+    #                line_width=1,
+    #                line_color=color,
+    #                source=source,
+    #                legend=data_series.split('|')[0],
+    #                name=data_series.split('|')[0]),
+
+    plot_data(susp, colors, source, time, SUSPENSION)
+    plot_data(powertrain, colors, source, time, POWERTRAIN)
+    plot_data(accel, colors, source, time, ACCELERATION)
+    coord = plot_coords(df, filename)
+
+
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=source, size=3,
                     color='firebrick')
+
+
 
     susp_hover = HoverTool()
     powertrain_hover = HoverTool()
@@ -123,20 +133,27 @@ def plot_rcprodata(df, filename):
     traction.add_tools(traction_hover)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
-    # epic
-    return susp, powertrain, traction, accel
+    return susp, powertrain, traction, accel, coord
 
-def get_data(df, filename, title_string, data_legend):
+def create_figure(filename, title_string):
 
-    data_type_source = ColumnDataSource(df)
-    if data_legend == 'Suspension_{}' or data_legend == 'Powertrain_{}':
+    if title_string == 'Traction':
         data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
-                           x_axis_label='Time')
+                           x_axis_label='X accel')
     else:
         data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
                            x_axis_label='Time')
-
     return data_type
+
+def plot_data(p, colors, source, time, header_list):
+
+    for data_series, color in zip(header_list, colors):
+        p.line(x=time, y=data_series,
+                  line_width=2,
+                  line_color=color,
+                  source=source,
+                  legend=data_series.split('|')[0],
+                  name=data_series.split('|')[0])
 
 def plot_coords(df, filename):
     lat = 'Latitude|"Degrees"|-180.0|180.0|10'
@@ -180,8 +197,7 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot, traction_plot, accel_plot = plot_rcprodata(data, filename=logfile)
-            coord_plot = plot_coords(data, filename=logfile)
+            susp_plot, pt_plot, traction_plot, accel_plot, coord_plot = plot_rcprodata(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
             # sr_logo = plot_image('..\Schulich Racing.png')
 
