@@ -62,40 +62,25 @@ def plot_rcprodata(df, filename):
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
     colors = itertools.cycle(Category20_20)
+    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+    long = 'Longitude|"Degrees"|-180.0|180.0|10'
+    speed = 'Speed|"mph"|0.0|150.0|10'
+    df.loc[df[lat] == 0, lat] = np.nan
+    df.loc[df[long] == 0, long] = np.nan
+    df[lat] = -df[lat]
+    df[long] = -df[long]
+    df = df.dropna()
     source = ColumnDataSource(df)
+    source.add(df['Interval|"ms"|0|0|1'], name='Time')
     time = 'Interval|"ms"|0|0|1'
-    # for data_series, color in zip(SUSPENSION, colors):
-    #     susp.line(x=time, y=data_series,
-    #               line_width=2,
-    #               line_color=color,
-    #               source=source,
-    #               legend=data_series.split('|')[0],
-    #               name=data_series.split('|')[0])
-    # for data_series, color in zip(POWERTRAIN, colors):
-    #     powertrain.line(x=time, y=data_series,
-    #                     line_width=2,
-    #                     line_color=color,
-    #                     source=source,
-    #                     legend=data_series.split('|')[0],
-    #                     name=data_series.split('|')[0])
-    # for data_series, color in zip(ACCELERATION, colors):
-    #     accel.line(x=time, y=data_series,
-    #                line_width=1,
-    #                line_color=color,
-    #                source=source,
-    #                legend=data_series.split('|')[0],
-    #                name=data_series.split('|')[0]),
 
     plot_data(susp, colors, source, time, SUSPENSION)
     plot_data(powertrain, colors, source, time, POWERTRAIN)
     plot_data(accel, colors, source, time, ACCELERATION)
-    coord = plot_coords(df, filename)
+    coord = plot_coords(df, source, filename, speed, lat, long)
 
-
-    traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25', source=source, size=3,
-                    color='firebrick')
-
-
+    traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25',
+                    source=source, size=3, color='firebrick')
 
     susp_hover = HoverTool()
     powertrain_hover = HoverTool()
@@ -135,15 +120,18 @@ def plot_rcprodata(df, filename):
     powertrain.legend.click_policy = 'hide'
     return susp, powertrain, traction, accel, coord
 
+
 def create_figure(filename, title_string):
 
+    TOOLS = 'pan,box_select,lasso_select,box_zoom,wheel_zoom,save,reset'
     if title_string == 'Traction':
-        data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+        data_type = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
                            x_axis_label='X accel')
     else:
-        data_type = figure(sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+        data_type = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
                            x_axis_label='Time')
     return data_type
+
 
 def plot_data(p, colors, source, time, header_list):
 
@@ -155,26 +143,15 @@ def plot_data(p, colors, source, time, header_list):
                   legend=data_series.split('|')[0],
                   name=data_series.split('|')[0])
 
-def plot_coords(df, filename):
-    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
-    long = 'Longitude|"Degrees"|-180.0|180.0|10'
-    speed = 'Speed|"mph"|0.0|150.0|10'
-    df.loc[df[lat] == 0, lat] = np.nan
-    df.loc[df[long] == 0, long] = np.nan
-    df[lat] = -df[lat]
-    df[long] = -df[long]
+def plot_coords(df, source, filename, speed, lat, long):
 
-    coord_source = ColumnDataSource(df)
-    coord_source.add(df['Interval|"ms"|0|0|1'], name='Time')
-
-    coord = figure(sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
-
-    df = df.dropna()
+    TOOLS = 'pan,box_select,lasso_select,box_zoom,wheel_zoom,save,reset'
+    coord = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
     mapper = linear_cmap(field_name='Speed|"mph"|0.0|150.0|10', palette=inferno(max(df[speed])-min(df[speed])),
                          # low_color='#ffffff', high_color='#ffffff',
                          low=min(df[speed] + 13), high=max(df[speed]) - 27)
 
-    coord.circle(x=long, y=lat, source=coord_source, size=3, color=mapper)
+    coord.circle(x=long, y=lat, source=source, size=3, color=mapper)
 
     # TODO figure out how to make the points be connected
     # coord.line(x=long, y=lat, source=coord_source, line_width=2, color='red')
@@ -200,6 +177,8 @@ def plot_all(args):
             susp_plot, pt_plot, traction_plot, accel_plot, coord_plot = plot_rcprodata(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
             # sr_logo = plot_image('..\Schulich Racing.png')
+
+            susp_plot.x_range = pt_plot.x_range = accel_plot.x_range
 
             # TODO decide if we want this behaviour
             save(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table), filename='{}_{}.html'.format(logfile.split('.')[0],'plot'))
