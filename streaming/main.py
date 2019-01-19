@@ -104,6 +104,8 @@ def get_color_from_speed(speed, current_top_speed):
         r = 'ff'
         g = 'ff'
 
+        #yeet
+
     color_value = ''
     color_value += ('#' + r + g + '00')
     return color_value, current_top_speed
