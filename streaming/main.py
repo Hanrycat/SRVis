@@ -6,7 +6,7 @@ from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, curdoc
 
 host = "hilmi.ddns.net"
-port = 20114
+port = 20279
 db = 0
 password = "schulichracing14"
 channel = "main-channel"
@@ -31,7 +31,7 @@ car_source = ColumnDataSource(dict(
 ))
 
 p = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
-r2 = p.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
+r2 = p.circle(x='x', y='y', source=track_source, color='blue', radius=0.00002)
 # r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
 r1 = p.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
 
@@ -45,7 +45,7 @@ hypothetical_max_speed = 70
 
 def update():
     global cur_time, step, previous_lat, previous_long, top_speed
-    coords = dict(x=[], y=[], color=[])
+    coords = dict(x=[], y=[])#, color=[])
     current_lat = 0
     current_long = 0
     current_speed = 0
@@ -73,9 +73,9 @@ def update():
             coords['y'].append(-1 * current_lat)
             previous_lat = current_lat
 
-            current_color, new_max = get_color_from_speed(current_speed, top_speed)
-            top_speed = new_max
-            coords['color'].append(current_color)
+            # current_color, new_max = get_color_from_speed(current_speed, top_speed)
+            # top_speed = new_max
+            # coords['color'].append(current_color)
 
         track_source.stream(coords)
         car_source.stream(coords, 1)
