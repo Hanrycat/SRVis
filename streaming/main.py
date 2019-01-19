@@ -9,7 +9,7 @@ host = "hilmi.ddns.net"
 port = 20279
 db = 0
 password = "schulichracing14"
-channel = "main-channel"
+channel = "competition-channel"
 redis = redis.Redis(
     host=host,
     port=port,
@@ -17,10 +17,10 @@ redis = redis.Redis(
 ps = redis.pubsub()
 ps.subscribe(channel)
 
-LONGITUDE = 'Longitude|"Degrees"|-180.0|180.0|10'
-LATITUDE = 'Latitude|"Degrees"|-180.0|180.0|10'
-SPEED = 'Speed|"mph"|0.0|150.0|10'
-INTERVAL = 'Interval|"ms"|0|0|1'
+LONGITUDE = 'longitude'
+LATITUDE = 'latitude'
+SPEED = 'speed'
+INTERVAL = 'interval'
 
 track_source = ColumnDataSource(dict(
     x=[], y=[]
