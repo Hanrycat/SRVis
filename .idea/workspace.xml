@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6b35decd-ed66-428f-8d0a-4ec560fdcee1" name="Default" comment="Periodic update of functionality - uses bokeh 1.X now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Autocross last run June 22 18_plot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/Endurance Luke Driving June 23 18_plot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/post_plot/plot_rcpro.py" beforeDir="false" afterPath="$PROJECT_DIR$/post_plot/plot_rcpro.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streaming/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/streaming/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,11 +23,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/streaming/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+            <state relative-caret-position="204">
+              <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="plot_rcpro.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2346">
-              <caret line="155" column="16" selection-start-line="155" selection-start-column="12" selection-end-line="155" selection-end-column="16" />
+            <state relative-caret-position="2329">
+              <caret line="154" column="16" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -102,9 +100,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="951" />
+    <option name="width" value="978" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -116,42 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-              <item name="post_plot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-              <item name="rc_pro_server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-              <item name="streaming" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SRVis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SRVis" type="462c0819:PsiDirectoryNode" />
-              <item name="test_env" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -206,9 +169,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -228,9 +188,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="plot_rcpro" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -250,9 +207,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="plot_rcpro_server" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -272,9 +226,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SRVis" />
@@ -294,9 +245,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.plot_rcpro" />
@@ -386,80 +334,63 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <layout>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3065476" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.10474632" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="4" weight="0.3272472" />
       <window_info anchor="bottom" id="Run" order="13" weight="0.33224222" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.23314607" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.5914127" />
+      <window_info anchor="bottom" id="Terminal" order="5" visible="true" weight="0.23314607" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.59127516" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.3988764" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3988764" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.5914127" />
-      <window_info anchor="right" id="SciView" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="13" weight="0.33224222" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" side_tool="true" weight="0.3295302" />
-      <window_info anchor="right" id="Database" order="2" />
       <window_info anchor="bottom" id="Message" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.23579545" />
-      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3272472" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.5914127" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
       <window_info anchor="bottom" id="Run" order="13" weight="0.33224222" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3286517" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3289689" />
       <window_info anchor="right" x="0" y="0" width="337" height="648" id="Documentation" order="5" side_tool="true" weight="0.3295302" />
       <window_info anchor="bottom" id="Debug" order="9" weight="0.3988764" />
       <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.3622159" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.3289689" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="right" id="Database" order="2" />
-      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="4" weight="0.3286517" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cleaning up output" />
@@ -469,27 +400,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Periodic update of functionality - uses bokeh 1.X now" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/util/sampledata.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/plotting_common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/models/sources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="454" selection-start-line="454" selection-end-line="454" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_env/lap testing 1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
@@ -765,30 +675,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/1666347803/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-938">
-          <caret line="5069" column="23" lean-forward="true" selection-start-line="5069" selection-start-column="23" selection-end-line="5069" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/1666347803/builtins.py" />
     <entry file="file://$PROJECT_DIR$/bokeh-venv/Lib/site-packages/bokeh/plotting/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/post_plot/plot_rcpro.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="154" column="20" lean-forward="true" selection-start-line="154" selection-start-column="20" selection-end-line="154" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2329">
+          <caret line="154" column="16" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/streaming/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+        <state relative-caret-position="204">
+          <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
