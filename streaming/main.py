@@ -32,7 +32,7 @@ car_source = ColumnDataSource(dict(
 
 p = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
 r2 = p.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
-# r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)
+# r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
 r1 = p.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
 
 cur_time = 0
