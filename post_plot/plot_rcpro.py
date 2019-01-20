@@ -153,7 +153,6 @@ def plot_coords(df, source, filename, speed, lat, long):
 
     coord.circle(x=long, y=lat, source=source, size=3, color=mapper)
 
-    # TODO figure out how to make the points be connected
     # coord.line(x=long, y=lat, source=coord_source, line_width=2, color='red')
 
     # Tools
