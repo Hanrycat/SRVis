@@ -30,8 +30,6 @@ def rc_data_parse(logfile):
 
     data = pd.read_csv('..\{}'.format(logfile))
     data = data.fillna(method='ffill')
-
-    # data = data.dropna()
     return data
 
 
@@ -54,17 +52,22 @@ def plot_rcprodata(df, filename):
         'AccelY|"G"|-3.0|3.0|25',
         'AccelZ|"G"|-3.0|3.0|25'
     ]
+
+    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+    long = 'Longitude|"Degrees"|-180.0|180.0|10'
+    speed = ['Speed|"mph"|0.0|150.0|10']
+    time = 'Interval|"ms"|0|0|1'
+
     susp = create_figure(filename, 'Suspension')
     powertrain = create_figure(filename, 'Powertrain')
     accel = create_figure(filename, 'Accel')
+    speed_p = create_figure(filename, 'Speed')
     traction = create_figure(filename, 'Traction')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
     colors = itertools.cycle(Category20_20)
-    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
-    long = 'Longitude|"Degrees"|-180.0|180.0|10'
-    speed = 'Speed|"mph"|0.0|150.0|10'
+
     df.loc[df[lat] == 0, lat] = np.nan
     df.loc[df[long] == 0, long] = np.nan
     df[lat] = -df[lat]
@@ -72,13 +75,15 @@ def plot_rcprodata(df, filename):
     df = df.dropna()
     source = ColumnDataSource(df)
     source.add(df['Interval|"ms"|0|0|1'], name='Time')
-    time = 'Interval|"ms"|0|0|1'
 
     plot_data(susp, colors, source, time, SUSPENSION)
     plot_data(powertrain, colors, source, time, POWERTRAIN)
     plot_data(accel, colors, source, time, ACCELERATION)
-    coord = plot_coords(df, source, filename, speed, lat, long)
 
+    plot_data(speed_p, colors, source, time, speed)
+
+    speed = 'Speed|"mph"|0.0|150.0|10'
+    coord = plot_coords(df, source, filename, speed, lat, long)
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25',
                     source=source, size=3, color='firebrick')
 
@@ -86,6 +91,7 @@ def plot_rcprodata(df, filename):
     powertrain_hover = HoverTool()
     accel_hover = HoverTool()
     traction_hover = HoverTool()
+    speed_hover = HoverTool()
 
     susp_hover.tooltips = [
         ('Data', '$name'),
@@ -110,15 +116,20 @@ def plot_rcprodata(df, filename):
         ('Y Accel (G)', '$y{0.000}')
     ]
 
+    speed_hover.tooltips = [
+        ('Speed (mph)', '$y{0.000}')
+    ]
+
     susp.sizing_mode = 'scale_width'
     powertrain.sizing_mode = 'scale_width'
     susp.add_tools(susp_hover)
     powertrain.add_tools(powertrain_hover)
     accel.add_tools(accel_hover)
     traction.add_tools(traction_hover)
+    speed_p.add_tools(speed_hover)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
-    return susp, powertrain, traction, accel, coord
+    return susp, powertrain, traction, accel, speed_p, coord
 
 
 def create_figure(filename, title_string):
@@ -143,6 +154,7 @@ def plot_data(p, colors, source, time, header_list):
                   legend=data_series.split('|')[0],
                   name=data_series.split('|')[0])
 
+
 def plot_coords(df, source, filename, speed, lat, long):
 
     TOOLS = 'pan,box_select,lasso_select,box_zoom,wheel_zoom,save,reset'
@@ -153,9 +165,6 @@ def plot_coords(df, source, filename, speed, lat, long):
 
     coord.circle(x=long, y=lat, source=source, size=3, color=mapper)
 
-    # coord.line(x=long, y=lat, source=coord_source, line_width=2, color='red')
-
-    # Tools
     hover = HoverTool()
     hover.tooltips = [
         ('Lat', '$x{0.000000}'),
@@ -173,19 +182,16 @@ def plot_all(args):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot, traction_plot, accel_plot, coord_plot = plot_rcprodata(data, filename=logfile)
+            susp_plot, pt_plot, traction_plot, accel_plot, speed_plot, coord_plot = plot_rcprodata(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
             # sr_logo = plot_image('..\Schulich Racing.png')
 
-            susp_plot.x_range = pt_plot.x_range = accel_plot.x_range
+            susp_plot.x_range = pt_plot.x_range = accel_plot.x_range = speed_plot.x_range
 
             # TODO decide if we want this behaviour
-            save(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, susp_plot)), data_table), filename='{}_{}.html'.format(logfile.split('.')[0],'plot'))
+            save(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, speed_plot, susp_plot)), data_table), filename='{}_{}.html'.format(logfile.split('.')[0],'plot'))
             print('Finished processing')
 
-
-# TODO see if scatter plot can be represented with a smoothed connected line - look into averaging techniques for
-#  track mapping
 
 # TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
 
