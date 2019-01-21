@@ -79,10 +79,9 @@ def plot_rcprodata(df, filename):
     plot_data(susp, colors, source, time, SUSPENSION)
     plot_data(powertrain, colors, source, time, POWERTRAIN)
     plot_data(accel, colors, source, time, ACCELERATION)
-
     plot_data(speed_p, colors, source, time, speed)
 
-    speed = 'Speed|"mph"|0.0|150.0|10'
+    speed = speed[0] # 'Speed|"mph"|0.0|150.0|10'
     coord = plot_coords(df, source, filename, speed, lat, long)
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25',
                     source=source, size=3, color='firebrick')
