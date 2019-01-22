@@ -6,16 +6,20 @@ import numpy as np
 import bokeh.plotting as bk
 from bokeh.models import Span
 from bokeh.models import ColumnDataSource, HoverTool
-from bokeh.plotting import figure
 from bokeh.plotting import figure, output_file, show, save
 from bokeh.layouts import column, row
 from bokeh.models import ColumnDataSource
 from bokeh.models.tools import HoverTool
-from bokeh.palettes import Category20_20  # suppress unresolved import\
+from bokeh.palettes import Category20_20
 from bokeh.palettes import inferno
 from bokeh.transform import linear_cmap
 from datetime import datetime
 from common.plotting_common import plot_image, create_table
+from bokeh.layouts import widgetbox
+from bokeh.models.widgets import CheckboxButtonGroup
+from bokeh.models.widgets import RangeSlider
+
+# hv.extension('bokeh')
 
 
 # TODO move finalized code to common.plotting_common.
@@ -58,11 +62,11 @@ def plot_rcprodata(df, filename):
     speed = ['Speed|"mph"|0.0|150.0|10']
     time = 'Interval|"ms"|0|0|1'
 
-    susp = create_figure(filename, 'Suspension')
-    powertrain = create_figure(filename, 'Powertrain')
-    accel = create_figure(filename, 'Accel')
-    speed_p = create_figure(filename, 'Speed')
-    traction = create_figure(filename, 'Traction')
+    susp = create_figure(filename, 'Suspension_{}')
+    powertrain = create_figure(filename, 'Powertrain_{}')
+    accel = create_figure(filename, 'Acceleration_{}')
+    speed_p = create_figure(filename, 'Speed_{}')
+    traction = create_figure(filename, 'Traction_{}')
 
     # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
     # create a color iterator
@@ -80,9 +84,7 @@ def plot_rcprodata(df, filename):
     plot_data(powertrain, colors, source, time, POWERTRAIN)
     plot_data(accel, colors, source, time, ACCELERATION)
     plot_data(speed_p, colors, source, time, speed)
-
-    speed = speed[0] # 'Speed|"mph"|0.0|150.0|10'
-    coord = plot_coords(df, source, filename, speed, lat, long)
+    coord = plot_coords(df, source, filename, lat, long)
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25',
                     source=source, size=3, color='firebrick')
 
@@ -128,18 +130,22 @@ def plot_rcprodata(df, filename):
     speed_p.add_tools(speed_hover)
     susp.legend.click_policy = 'hide'
     powertrain.legend.click_policy = 'hide'
+
     return susp, powertrain, traction, accel, speed_p, coord
 
 
 def create_figure(filename, title_string):
 
-    TOOLS = 'pan,box_select,lasso_select,box_zoom,wheel_zoom,save,reset'
+    TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
     if title_string == 'Traction':
-        data_type = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+        data_type = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                           width=700, height=300, title=title_string.format(filename),
                            x_axis_label='X accel')
     else:
-        data_type = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=300, title=title_string.format(filename),
+        data_type = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                           width=700, height=300, title=title_string.format(filename),
                            x_axis_label='Time')
+
     return data_type
 
 
@@ -147,17 +153,21 @@ def plot_data(p, colors, source, time, header_list):
 
     for data_series, color in zip(header_list, colors):
         p.line(x=time, y=data_series,
-                  line_width=2,
-                  line_color=color,
-                  source=source,
-                  legend=data_series.split('|')[0],
-                  name=data_series.split('|')[0])
+            line_width=2,
+            line_color=color,
+            source=source,
+            legend=data_series.split('|')[0],
+            name=data_series.split('|')[0])
 
 
-def plot_coords(df, source, filename, speed, lat, long):
+def plot_coords(df, source, filename, lat, long):
 
-    TOOLS = 'pan,box_select,lasso_select,box_zoom,wheel_zoom,save,reset'
-    coord = figure(tools=TOOLS, sizing_mode='scale_both', width=700, height=600, title='GPS Data_{}'.format(filename))
+    TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
+    speed = 'Speed|"mph"|0.0|150.0|10'
+
+    coord = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                   width=700, height=600, title='GPS Data_{}'.format(filename))
+
     mapper = linear_cmap(field_name='Speed|"mph"|0.0|150.0|10', palette=inferno(max(df[speed])-min(df[speed])),
                          # low_color='#ffffff', high_color='#ffffff',
                          low=min(df[speed] + 13), high=max(df[speed]) - 27)
@@ -175,6 +185,26 @@ def plot_coords(df, source, filename, speed, lat, long):
 
     return coord
 
+def widgets(df):
+
+    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+    long = 'Longitude|"Degrees"|-180.0|180.0|10'
+    speed = ['Speed|"mph"|0.0|150.0|10']
+    time = 'Interval|"ms"|0|0|1'
+
+    df.loc[df[lat] == 0, lat] = np.nan
+    df.loc[df[long] == 0, long] = np.nan
+    df[lat] = -df[lat]
+    df[long] = -df[long]
+    df = df.dropna()
+    source = ColumnDataSource(df)
+    source.add(df['Interval|"ms"|0|0|1'], name='Time')
+
+    time = 'Interval|"ms"|0|0|1'
+    range_slider = RangeSlider(start=min(df[time]), end=max(df[time]),
+                               value=(min(df[time]), max(df[time])),
+                               step=1, title="Start - End")
+    return range_slider
 
 def plot_all(args):
     for file in os.listdir(r'..\\'):
@@ -183,12 +213,16 @@ def plot_all(args):
             data = rc_data_parse(logfile)
             susp_plot, pt_plot, traction_plot, accel_plot, speed_plot, coord_plot = plot_rcprodata(data, filename=logfile)
             data_table = create_table(data, filename=logfile)
+
             # sr_logo = plot_image('..\Schulich Racing.png')
 
             susp_plot.x_range = pt_plot.x_range = accel_plot.x_range = speed_plot.x_range
+            range_slider = widgets(data)
 
-            # TODO decide if we want this behaviour
-            save(column(row(column(traction_plot, accel_plot, pt_plot), column(coord_plot, speed_plot, susp_plot)), data_table), filename='{}_{}.html'.format(logfile.split('.')[0],'plot'))
+            save(column(row(column(traction_plot, accel_plot, pt_plot),
+                 column(widgetbox(range_slider), coord_plot, speed_plot, susp_plot)), data_table),
+                 filename='{}_{}.html'.format(logfile.split('.')[0], 'plot'))
+
             print('Finished processing')
 
 
