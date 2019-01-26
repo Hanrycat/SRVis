@@ -23,55 +23,73 @@ SPEED = 'Speed'
 INTERVAL = 'Interval'
 ACCEL_X = 'AccelX'
 ACCEL_Y = 'AccelY'
+TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
 
 # List of headers that correspond to each subteams data
 SUSPENSION = [
-    'RearRight|""|0.0|5.0|50',
-    'RearLeft|""|0.0|5.0|50',
-    'FrontLeft|""|0.0|5.0|50',
-    'FrontRight|""|0.0|5.0|50'
+    'RearRight',
+    'RearLeft',
+    'FrontLeft',
+    'FrontRight'
 ]
 POWERTRAIN = [
-    'EngineTemp|"C"|0|200|1',
-    'OilPressure|"psi"|0.0|200.0|50',
-    'OilTemp|"F"|0|300|1',
-    'FuelTemp|"C"|0|1024|1'
+    'EngineTemp',
+    'OilPressure',
+    'OilTemp',
+    'FuelTemp'
 ]
 ACCELERATION = [
-    'AccelX|"G"|-3.0|3.0|25',
-    'AccelY|"G"|-3.0|3.0|25',
-    'AccelZ|"G"|-3.0|3.0|25'
+    'AccelX',
+    'AccelY',
+    'AccelZ'
 ]
 
 track_source = ColumnDataSource(dict(
-    x=[], y=[], color=[]
+    long=[], lat=[], color=[]
 ))
 
 car_source = ColumnDataSource(dict(
-    x=[], y=[], color=[]
+    long=[], lat=[], color=[]
 ))
 
-coords_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
-coords_track = coords_f.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
+track_source2 = ColumnDataSource(dict(
+    accel_x=[], accel_y=[]
+))
+
+car_source2 = ColumnDataSource(dict(
+    accel_x=[], accel_y=[]
+))
+
+track_source3 = ColumnDataSource(dict(
+    time=[], rr=[], rl=[], fl=[], fr=[]
+))
+
+track_source4 = ColumnDataSource(dict(
+    time=[], mph=[]
+))
+
+coords_f = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both', plot_width=700, plot_height=700)
+coords_track = coords_f.circle(x='long', y='lat', source=track_source, color='color',     radius=0.00002)
 # r2 = coords_f.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
-coords_car = coords_f.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
+coords_car = coords_f.circle(  x='long', y='lat', source=car_source,   color='firebrick', radius=0.00002)
 
-traction_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
-traction_car = traction_f.circle(x='x', y='y', source=car_source, color='blue', radius=0.01)
-traction_track = traction_f.circle(x='x', y='y', source=track_source, color='red', radius=0.02)
+traction_f = figure(output_backend="webgl", tools=TOOLS, x_range=(-2, 2), y_range=(-1.5, 1.5), plot_width=700, plot_height=400)
+traction_car = traction_f.circle(x='accel_x',   y='accel_y', source=car_source2,   color='blue', radius=0.05)
+traction_track = traction_f.circle(x='accel_x', y='accel_y', source=track_source2, color='red',  radius=0.02)
 
-susp_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
-susp_track_rear_left = susp_f.line(x='x', y='y', source=track_source, color='red', line_width=1)
-susp_track_rear_right = susp_f.line(x='x', y='y', source=track_source, color='green', line_width=1)
-susp_track_front_left = susp_f.line(x='x', y='y', source=track_source, color='blue', line_width=1)
-susp_track_front_right = susp_f.line(x='x', y='y', source=track_source, color='yellow', line_width=1)
+susp_f = figure(output_backend="webgl", sizing_mode='scale_both', plot_width=700, plot_height=400)
+susp_track_rr = susp_f.line(x='time', y='rr', source=track_source3, color='red',    line_width=1)
+susp_track_rl = susp_f.line(x='time', y='rl', source=track_source3, color='green',  line_width=1)
+susp_track_fl = susp_f.line(x='time', y='fl', source=track_source3, color='blue',   line_width=1)
+susp_track_fr = susp_f.line(x='time', y='fr', source=track_source3, color='yellow', line_width=1)
 
-speed_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
-# speed_track = speed_f.line()
+
+speed_f = figure(output_backend="webgl", sizing_mode='scale_both', plot_width=700, plot_height=400)
+speed_track = speed_f.line(x='time', y='mph', source=track_source4, color='black', line_width=3)
 
 cur_time = 0
 step = 1
-top_speed = 0
+top_speed = 1
 previous_lat = 0
 previous_long = 0
 hypothetical_max_speed = 70
@@ -79,15 +97,23 @@ hypothetical_max_speed = 70
 
 def update():
     global cur_time, step, previous_lat, previous_long, top_speed
-    coords = dict(x=[], y=[], color=[])
-    traction = dict(x=[], y=[], color=[])
+    coords = dict(long=[], lat=[], color=[])
+    traction = dict(accel_x=[], accel_y=[])
+    susp = dict(time=[], rr=[], rl=[], fl=[], fr=[])
+    speed = dict(time=[], mph=[])
+
     current_lat = 0
     current_long = 0
     current_speed = 0
 
     current_accel_x = 0
     current_accel_y = 0
-    # current_accel_z = 0
+    current_accel_z = 0
+
+    current_rr_susp = 0
+    current_rl_susp = 0
+    current_fl_susp = 0
+    current_fr_susp = 0
 
     message = ps.get_message()  # Checks for message
 
@@ -99,15 +125,27 @@ def update():
         data_string = json.loads(data)
         df = pd.DataFrame(data_string, index=[0])
         try:
+            #time
+            current_interval = float(df[INTERVAL].values[0])
+
             #coords
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
             current_speed = float(df[SPEED].values[0])
 
             #accels
-            current_accel_x = float(df[ACCEL_X].values[0])
-            current_accel_y = float(df[ACCEL_Y].values[0])
-            # current_accel_z = float(df[ACCEL_Z].values[0])
+            current_accel_x = float(df[ACCELERATION[0]].values[0])
+            current_accel_y = float(df[ACCELERATION[1]].values[0])
+            current_accel_z = float(df[ACCELERATION[2]].values[0])
+
+            #susps
+            current_rr_susp = float(df[SUSPENSION[0]].values[0])
+            current_rl_susp = float(df[SUSPENSION[1]].values[0])
+            current_fl_susp = float(df[SUSPENSION[2]].values[0])
+            current_fr_susp = float(df[SUSPENSION[3]].values[0])
+
+            #speed
+            current_speed = float(df[SPEED].values[0])
 
         except (ValueError, TypeError):
             # print(message)
@@ -115,31 +153,52 @@ def update():
 
         if abs(current_long) > 1 and not current_long == previous_long and \
                 abs(current_lat) > 1 and not current_lat == previous_lat:
-            coords['x'].append(-1 * current_long)
+            coords['long'].append(-1 * current_long)
             previous_long = current_long
 
-            coords['y'].append(-1 * current_lat)
+            coords['lat'].append(-1 * current_lat)
             previous_lat = current_lat
 
             current_color, new_max = get_color_from_speed(current_speed, top_speed)
             top_speed = new_max
             coords['color'].append(current_color)
 
-        if (current_accel_y < 4) and (current_accel_x < 4) and (current_accel_y > -4) and (current_accel_x > -4):
-            traction['x'].append(current_accel_x)
-            traction['y'].append(current_accel_y)
-            traction['color'].append('red')
+        if (current_accel_y != 0) and (current_accel_x != 0):
+            traction['accel_x'].append(current_accel_x)
+            traction['accel_y'].append(current_accel_y)
+
+
+        if current_rr_susp != 0:
+            susp['rr'].append(current_rr_susp)
+        if current_rl_susp != 0:
+            susp['rl'].append(current_rl_susp)
+        if current_fl_susp != 0:
+            susp['fl'].append(current_fl_susp)
+        if current_fr_susp != 0:
+            susp['fr'].append(current_fr_susp)
+        susp['time'].append(current_interval)
+
+        if current_speed != 0:
+            speed['mph'].append(current_speed)
+            speed['time'].append(current_interval)
 
         track_source.stream(coords)
         car_source.stream(coords, 1)
 
-        track_source.stream(traction)
-        car_source.stream(traction, 1)
+        track_source2.stream(traction)
+        car_source2.stream(traction, 1)
+
+        track_source3.stream(susp)
+
+        track_source4.stream(speed)
 
         cur_time += step
+        val = track_source3
+        print('val is {}'.format(val))
 
 
-curdoc().add_root(column(row(coords_f, traction_f)))
+curdoc().add_root(column(row(column(traction_f, susp_f),
+                  column(coords_f, speed_f))))
 curdoc().add_periodic_callback(update, 0)
 
 
@@ -159,8 +218,6 @@ def get_color_from_speed(speed, current_top_speed):
     else:
         r = 'ff'
         g = 'ff'
-
-        #yeet
 
     color_value = ''
     color_value += ('#' + r + g + '00')
