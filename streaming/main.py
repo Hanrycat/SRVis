@@ -9,7 +9,7 @@ host = "hilmi.ddns.net"
 port = 20279
 db = 0
 password = "schulichracing14"
-channel = "competition-channel"
+channel = "main-channel"
 redis = redis.Redis(
     host=host,
     port=port,
@@ -17,13 +17,13 @@ redis = redis.Redis(
 ps = redis.pubsub()
 ps.subscribe(channel)
 
-LONGITUDE = 'longitude'
-LATITUDE = 'latitude'
-SPEED = 'speed'
-INTERVAL = 'interval'
+LONGITUDE = 'Longitude|"Degrees"|-180.0|180.0|10'
+LATITUDE = 'Latitude|"Degrees"|-180.0|180.0|10'
+SPEED = 'Speed|"mph"|0.0|150.0|10'
+INTERVAL = 'Interval|"ms"|0|0|1'
 
 track_source = ColumnDataSource(dict(
-    x=[], y=[]
+    x=[], y=[], color=[]
 ))
 
 car_source = ColumnDataSource(dict(
@@ -31,7 +31,7 @@ car_source = ColumnDataSource(dict(
 ))
 
 p = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
-r2 = p.circle(x='x', y='y', source=track_source, color='blue', radius=0.00002)
+r2 = p.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
 # r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
 r1 = p.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
 
@@ -45,12 +45,13 @@ hypothetical_max_speed = 70
 
 def update():
     global cur_time, step, previous_lat, previous_long, top_speed
-    coords = dict(x=[], y=[])#, color=[])
+    coords = dict(x=[], y=[], color=[])
     current_lat = 0
     current_long = 0
     current_speed = 0
 
     message = ps.get_message()  # Checks for message
+
     if not message or message['data'] == 1:
         print(r'Shit is fucked, yo! Message was: {}'.format(message))
         pass
@@ -62,7 +63,8 @@ def update():
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
             current_speed = float(df[SPEED].values[0])
-        except ValueError:
+        except (ValueError, TypeError):
+            # print(message)
             pass  # failed to convert because values in were null
 
         if abs(current_long) > 1 and not current_long == previous_long and \
@@ -73,9 +75,9 @@ def update():
             coords['y'].append(-1 * current_lat)
             previous_lat = current_lat
 
-            # current_color, new_max = get_color_from_speed(current_speed, top_speed)
-            # top_speed = new_max
-            # coords['color'].append(current_color)
+            current_color, new_max = get_color_from_speed(current_speed, top_speed)
+            top_speed = new_max
+            coords['color'].append(current_color)
 
         track_source.stream(coords)
         car_source.stream(coords, 1)
