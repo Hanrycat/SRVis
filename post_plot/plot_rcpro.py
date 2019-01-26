@@ -18,8 +18,13 @@ from common.plotting_common import plot_image, create_table
 from bokeh.layouts import widgetbox
 from bokeh.models.widgets import CheckboxButtonGroup
 from bokeh.models.widgets import RangeSlider
-
 # hv.extension('bokeh')
+
+TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
+lat = 'Latitude|"Degrees"|-180.0|180.0|10'
+long = 'Longitude|"Degrees"|-180.0|180.0|10'
+speed = ['Speed|"mph"|0.0|150.0|10']
+time = 'Interval|"ms"|0|0|1'
 
 
 # TODO move finalized code to common.plotting_common.
@@ -56,11 +61,6 @@ def plot_rcprodata(df, filename):
         'AccelY|"G"|-3.0|3.0|25',
         'AccelZ|"G"|-3.0|3.0|25'
     ]
-
-    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
-    long = 'Longitude|"Degrees"|-180.0|180.0|10'
-    speed = ['Speed|"mph"|0.0|150.0|10']
-    time = 'Interval|"ms"|0|0|1'
 
     susp = create_figure(filename, 'Suspension_{}')
     powertrain = create_figure(filename, 'Powertrain_{}')
@@ -136,7 +136,6 @@ def plot_rcprodata(df, filename):
 
 def create_figure(filename, title_string):
 
-    TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
     if title_string == 'Traction':
         data_type = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
                            width=700, height=300, title=title_string.format(filename),
@@ -162,7 +161,6 @@ def plot_data(p, colors, source, time, header_list):
 
 def plot_coords(df, source, filename, lat, long):
 
-    TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
     speed = 'Speed|"mph"|0.0|150.0|10'
 
     coord = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
@@ -186,11 +184,6 @@ def plot_coords(df, source, filename, lat, long):
     return coord
 
 def widgets(df):
-
-    lat = 'Latitude|"Degrees"|-180.0|180.0|10'
-    long = 'Longitude|"Degrees"|-180.0|180.0|10'
-    speed = ['Speed|"mph"|0.0|150.0|10']
-    time = 'Interval|"ms"|0|0|1'
 
     df.loc[df[lat] == 0, lat] = np.nan
     df.loc[df[long] == 0, long] = np.nan

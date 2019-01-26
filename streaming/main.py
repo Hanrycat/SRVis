@@ -3,12 +3,13 @@ import pandas as pd
 import redis
 from bokeh.models import ColumnDataSource
 from bokeh.plotting import figure, curdoc
+from bokeh.layouts import column, row
 
 host = "hilmi.ddns.net"
 port = 20279
 db = 0
 password = "schulichracing14"
-channel = "main-channel"
+channel = "endurance-channel"
 redis = redis.Redis(
     host=host,
     port=port,
@@ -16,12 +17,12 @@ redis = redis.Redis(
 ps = redis.pubsub()
 ps.subscribe(channel)
 
-LONGITUDE = 'Longitude|"Degrees"|-180.0|180.0|10'
-LATITUDE = 'Latitude|"Degrees"|-180.0|180.0|10'
-SPEED = 'Speed|"mph"|0.0|150.0|10'
-INTERVAL = 'Interval|"ms"|0|0|1'
-ACCEL_X = 'AccelX|"G"|-3.0|3.0|25'
-ACCEL_Y = 'AccelY|"G"|-3.0|3.0|25'
+LONGITUDE = 'Longitude'
+LATITUDE = 'Latitude'
+SPEED = 'Speed'
+INTERVAL = 'Interval'
+ACCEL_X = 'AccelX'
+ACCEL_Y = 'AccelY'
 
 # List of headers that correspond to each subteams data
 SUSPENSION = [
@@ -51,13 +52,22 @@ car_source = ColumnDataSource(dict(
 ))
 
 coords_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
-r2 = coords_f.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
+coords_track = coords_f.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
 # r2 = coords_f.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
-r1 = coords_f.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
+coords_car = coords_f.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
 
 traction_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
 traction_car = traction_f.circle(x='x', y='y', source=car_source, color='blue', radius=0.01)
 traction_track = traction_f.circle(x='x', y='y', source=track_source, color='red', radius=0.02)
+
+susp_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
+susp_track_rear_left = susp_f.line(x='x', y='y', source=track_source, color='red', line_width=1)
+susp_track_rear_right = susp_f.line(x='x', y='y', source=track_source, color='green', line_width=1)
+susp_track_front_left = susp_f.line(x='x', y='y', source=track_source, color='blue', line_width=1)
+susp_track_front_right = susp_f.line(x='x', y='y', source=track_source, color='yellow', line_width=1)
+
+speed_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
+# speed_track = speed_f.line()
 
 cur_time = 0
 step = 1
@@ -95,8 +105,8 @@ def update():
             current_speed = float(df[SPEED].values[0])
 
             #accels
-            # current_accel_x = float(df[ACCEL_X].values[0])
-            # current_accel_y = float(df[ACCEL_Y].values[0])
+            current_accel_x = float(df[ACCEL_X].values[0])
+            current_accel_y = float(df[ACCEL_Y].values[0])
             # current_accel_z = float(df[ACCEL_Z].values[0])
 
         except (ValueError, TypeError):
@@ -115,9 +125,10 @@ def update():
             top_speed = new_max
             coords['color'].append(current_color)
 
-        # traction['x'].append(current_accel_x)
-        # traction['y'].append(current_accel_y)
-        # traction['color'].append('red')
+        if (current_accel_y < 4) and (current_accel_x < 4) and (current_accel_y > -4) and (current_accel_x > -4):
+            traction['x'].append(current_accel_x)
+            traction['y'].append(current_accel_y)
+            traction['color'].append('red')
 
         track_source.stream(coords)
         car_source.stream(coords, 1)
@@ -128,10 +139,8 @@ def update():
         cur_time += step
 
 
-curdoc().add_root(coords_f)
-# curdoc().add_root(traction_f)
+curdoc().add_root(column(row(coords_f, traction_f)))
 curdoc().add_periodic_callback(update, 0)
-
 
 
 def get_color_from_speed(speed, current_top_speed):
