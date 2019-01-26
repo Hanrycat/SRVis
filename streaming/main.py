@@ -1,5 +1,4 @@
 import json
-
 import pandas as pd
 import redis
 from bokeh.models import ColumnDataSource
@@ -21,19 +20,44 @@ LONGITUDE = 'Longitude|"Degrees"|-180.0|180.0|10'
 LATITUDE = 'Latitude|"Degrees"|-180.0|180.0|10'
 SPEED = 'Speed|"mph"|0.0|150.0|10'
 INTERVAL = 'Interval|"ms"|0|0|1'
+ACCEL_X = 'AccelX|"G"|-3.0|3.0|25'
+ACCEL_Y = 'AccelY|"G"|-3.0|3.0|25'
+
+# List of headers that correspond to each subteams data
+SUSPENSION = [
+    'RearRight|""|0.0|5.0|50',
+    'RearLeft|""|0.0|5.0|50',
+    'FrontLeft|""|0.0|5.0|50',
+    'FrontRight|""|0.0|5.0|50'
+]
+POWERTRAIN = [
+    'EngineTemp|"C"|0|200|1',
+    'OilPressure|"psi"|0.0|200.0|50',
+    'OilTemp|"F"|0|300|1',
+    'FuelTemp|"C"|0|1024|1'
+]
+ACCELERATION = [
+    'AccelX|"G"|-3.0|3.0|25',
+    'AccelY|"G"|-3.0|3.0|25',
+    'AccelZ|"G"|-3.0|3.0|25'
+]
 
 track_source = ColumnDataSource(dict(
     x=[], y=[], color=[]
 ))
 
 car_source = ColumnDataSource(dict(
-    x=[], y=[]
+    x=[], y=[], color=[]
 ))
 
-p = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
-r2 = p.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
-# r2 = p.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
-r1 = p.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
+coords_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=700)
+r2 = coords_f.circle(x='x', y='y', source=track_source, color='color', radius=0.00002)
+# r2 = coords_f.line(x='x', y='y', source=track_source, color='black', line_width=3)  # Line traced track
+r1 = coords_f.circle(x='x', y='y', source=car_source, color='firebrick', radius=0.00002)
+
+traction_f = figure(sizing_mode='scale_both', plot_width=700, plot_height=400)
+traction_car = traction_f.circle(x='x', y='y', source=car_source, color='blue', radius=0.01)
+traction_track = traction_f.circle(x='x', y='y', source=track_source, color='red', radius=0.02)
 
 cur_time = 0
 step = 1
@@ -46,9 +70,14 @@ hypothetical_max_speed = 70
 def update():
     global cur_time, step, previous_lat, previous_long, top_speed
     coords = dict(x=[], y=[], color=[])
+    traction = dict(x=[], y=[], color=[])
     current_lat = 0
     current_long = 0
     current_speed = 0
+
+    current_accel_x = 0
+    current_accel_y = 0
+    # current_accel_z = 0
 
     message = ps.get_message()  # Checks for message
 
@@ -60,9 +89,16 @@ def update():
         data_string = json.loads(data)
         df = pd.DataFrame(data_string, index=[0])
         try:
+            #coords
             current_long = float(df[LONGITUDE].values[0])
             current_lat = float(df[LATITUDE].values[0])
             current_speed = float(df[SPEED].values[0])
+
+            #accels
+            # current_accel_x = float(df[ACCEL_X].values[0])
+            # current_accel_y = float(df[ACCEL_Y].values[0])
+            # current_accel_z = float(df[ACCEL_Z].values[0])
+
         except (ValueError, TypeError):
             # print(message)
             pass  # failed to convert because values in were null
@@ -79,14 +115,23 @@ def update():
             top_speed = new_max
             coords['color'].append(current_color)
 
+        # traction['x'].append(current_accel_x)
+        # traction['y'].append(current_accel_y)
+        # traction['color'].append('red')
+
         track_source.stream(coords)
         car_source.stream(coords, 1)
+
+        track_source.stream(traction)
+        car_source.stream(traction, 1)
 
         cur_time += step
 
 
-curdoc().add_root(p)
+curdoc().add_root(coords_f)
+# curdoc().add_root(traction_f)
 curdoc().add_periodic_callback(update, 0)
+
 
 
 def get_color_from_speed(speed, current_top_speed):
