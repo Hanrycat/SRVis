@@ -83,7 +83,6 @@ susp_track_rl = susp_f.line(x='time', y='rl', source=track_source3, color='green
 susp_track_fl = susp_f.line(x='time', y='fl', source=track_source3, color='blue',   line_width=1)
 susp_track_fr = susp_f.line(x='time', y='fr', source=track_source3, color='yellow', line_width=1)
 
-
 speed_f = figure(output_backend="webgl", sizing_mode='scale_both', plot_width=700, plot_height=400)
 speed_track = speed_f.line(x='time', y='mph', source=track_source4, color='black', line_width=3)
 
@@ -93,10 +92,12 @@ top_speed = 1
 previous_lat = 0
 previous_long = 0
 hypothetical_max_speed = 70
+first_interval = 11189
+i = 0
 
 
 def update():
-    global cur_time, step, previous_lat, previous_long, top_speed
+    global cur_time, step, previous_lat, previous_long, top_speed, i
     coords = dict(long=[], lat=[], color=[])
     traction = dict(accel_x=[], accel_y=[])
     susp = dict(time=[], rr=[], rl=[], fl=[], fr=[])
@@ -182,19 +183,16 @@ def update():
             speed['mph'].append(current_speed)
             speed['time'].append(current_interval)
 
-        track_source.stream(coords)
-        car_source.stream(coords, 1)
-
-        track_source2.stream(traction)
-        car_source2.stream(traction, 1)
-
-        track_source3.stream(susp)
-
-        track_source4.stream(speed)
+        if i % 10 == 0:
+            track_source.stream(coords)
+            car_source.stream(coords, 1)
+            track_source2.stream(traction)
+            car_source2.stream(traction, 1)
+            track_source3.stream(susp)
+            track_source4.stream(speed)
+        i += 1
 
         cur_time += step
-        val = track_source3
-        print('val is {}'.format(val))
 
 
 curdoc().add_root(column(row(column(traction_f, susp_f),
