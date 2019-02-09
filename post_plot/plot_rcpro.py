@@ -16,8 +16,7 @@ from bokeh.transform import linear_cmap
 from datetime import datetime
 from common.plotting_common import plot_image, create_table
 from bokeh.layouts import widgetbox
-from bokeh.models.widgets import CheckboxButtonGroup
-from bokeh.models.widgets import RangeSlider
+from bokeh.models import CustomJS, Slider
 # hv.extension('bokeh')
 
 TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
@@ -25,7 +24,6 @@ lat = 'Latitude|"Degrees"|-180.0|180.0|10'
 long = 'Longitude|"Degrees"|-180.0|180.0|10'
 speed = ['Speed|"mph"|0.0|150.0|10']
 time = 'Interval|"ms"|0|0|1'
-
 
 # TODO move finalized code to common.plotting_common.
 #  Only code that is specific to post_processing log files for
@@ -42,7 +40,18 @@ def rc_data_parse(logfile):
     return data
 
 
-def plot_rcprodata(df, filename):
+def create_source_df(df):
+    df.loc[df[lat] == 0, lat] = np.nan
+    df.loc[df[long] == 0, long] = np.nan
+    df[lat] = -df[lat]
+    df[long] = -df[long]
+    df = df.dropna()
+    source = ColumnDataSource(df)
+    source.add(df['Interval|"ms"|0|0|1'], name='Time')
+    return source, df
+
+
+def plot_rcprodata(source, df, filename):
     # List of headers that correspond to each subteams data
     SUSPENSION = [
         'RearRight|""|0.0|5.0|50',
@@ -62,23 +71,14 @@ def plot_rcprodata(df, filename):
         'AccelZ|"G"|-3.0|3.0|25'
     ]
 
+    #Creating figures for all plots
     susp = create_figure(filename, 'Suspension_{}')
     powertrain = create_figure(filename, 'Powertrain_{}')
     accel = create_figure(filename, 'Acceleration_{}')
     speed_p = create_figure(filename, 'Speed_{}')
     traction = create_figure(filename, 'Traction_{}')
 
-    # TODO figure out color palletes https://bokeh.pydata.org/en/latest/docs/reference/palettes.html
-    # create a color iterator
     colors = itertools.cycle(Category20_20)
-
-    df.loc[df[lat] == 0, lat] = np.nan
-    df.loc[df[long] == 0, long] = np.nan
-    df[lat] = -df[lat]
-    df[long] = -df[long]
-    df = df.dropna()
-    source = ColumnDataSource(df)
-    source.add(df['Interval|"ms"|0|0|1'], name='Time')
 
     plot_data(susp, colors, source, time, SUSPENSION)
     plot_data(powertrain, colors, source, time, POWERTRAIN)
@@ -137,15 +137,15 @@ def plot_rcprodata(df, filename):
 def create_figure(filename, title_string):
 
     if title_string == 'Traction':
-        data_type = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+        plot = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
                            width=700, height=300, title=title_string.format(filename),
                            x_axis_label='X accel')
     else:
-        data_type = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+        plot = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
                            width=700, height=300, title=title_string.format(filename),
                            x_axis_label='Time')
 
-    return data_type
+    return plot
 
 
 def plot_data(p, colors, source, time, header_list):
@@ -183,43 +183,26 @@ def plot_coords(df, source, filename, lat, long):
 
     return coord
 
-def widgets(df):
-
-    df.loc[df[lat] == 0, lat] = np.nan
-    df.loc[df[long] == 0, long] = np.nan
-    df[lat] = -df[lat]
-    df[long] = -df[long]
-    df = df.dropna()
-    source = ColumnDataSource(df)
-    source.add(df['Interval|"ms"|0|0|1'], name='Time')
-
-    time = 'Interval|"ms"|0|0|1'
-    range_slider = RangeSlider(start=min(df[time]), end=max(df[time]),
-                               value=(min(df[time]), max(df[time])),
-                               step=1, title="Start - End")
-    return range_slider
-
 def plot_all(args):
+    global time
+
     for file in os.listdir(r'..\\'):
         if file.endswith('.log'):
             logfile = file
             data = rc_data_parse(logfile)
-            susp_plot, pt_plot, traction_plot, accel_plot, speed_plot, coord_plot = plot_rcprodata(data, filename=logfile)
+            source, df = create_source_df(data)
+            susp_plot, pt_plot, traction_plot, accel_plot, speed_plot, coord_plot = plot_rcprodata(source, df,
+                                                                                                   filename=logfile)
             data_table = create_table(data, filename=logfile)
 
             # sr_logo = plot_image('..\Schulich Racing.png')
-
             susp_plot.x_range = pt_plot.x_range = accel_plot.x_range = speed_plot.x_range
-            range_slider = widgets(data)
 
             save(column(row(column(traction_plot, accel_plot, pt_plot),
-                 column(widgetbox(range_slider), coord_plot, speed_plot, susp_plot)), data_table),
+                 column(widgetbox(slider), coord_plot, speed_plot, susp_plot)), data_table),
                  filename='{}_{}.html'.format(logfile.split('.')[0], 'plot'))
 
             print('Finished processing')
-
-
-# TODO get streaming working https://www.youtube.com/watch?v=NUrhOj3DzYs
 
 # TODO start to look into generating laptimes - user interactivity
 #  https://bokeh.pydata.org/en/latest/docs/user_guide/interaction/widgets.html BIG ONE
