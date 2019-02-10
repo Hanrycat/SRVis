@@ -16,14 +16,34 @@ from bokeh.transform import linear_cmap
 from datetime import datetime
 from common.plotting_common import plot_image, create_table
 from bokeh.layouts import widgetbox
-from bokeh.models import CustomJS, Slider
+from bokeh.models import CustomJS, Slider, RadioButtonGroup, RangeSlider
 # hv.extension('bokeh')
 
+# List of headers, to access and read data.
 TOOLS = 'pan,box_select,box_zoom,wheel_zoom,save,reset'
 lat = 'Latitude|"Degrees"|-180.0|180.0|10'
 long = 'Longitude|"Degrees"|-180.0|180.0|10'
 speed = ['Speed|"mph"|0.0|150.0|10']
 time = 'Interval|"ms"|0|0|1'
+
+# List of headers that correspond to each subteams data
+SUSPENSION = [
+   'RearRight|""|0.0|5.0|50',
+   'RearLeft|""|0.0|5.0|50',
+   'FrontLeft|""|0.0|5.0|50',
+    'FrontRight|""|0.0|5.0|50'
+    ]
+POWERTRAIN = [
+    'EngineTemp|"C"|0|200|1',
+    'OilPressure|"psi"|0.0|200.0|50',
+    'OilTemp|"F"|0|300|1',
+    'FuelTemp|"C"|0|1024|1',
+    ]
+ACCELERATION = [
+    'AccelX|"G"|-3.0|3.0|25',
+    'AccelY|"G"|-3.0|3.0|25',
+    'AccelZ|"G"|-3.0|3.0|25'
+    ]
 
 # TODO move finalized code to common.plotting_common.
 #  Only code that is specific to post_processing log files for
@@ -33,8 +53,8 @@ time = 'Interval|"ms"|0|0|1'
 # https://bokeh.pydata.org/en/latest/docs/user_guide.html
 # https://pandas.pydata.org/pandas-docs/stable/index.html
 
-def rc_data_parse(logfile):
 
+def rc_data_parse(logfile):
     data = pd.read_csv('..\{}'.format(logfile))
     data = data.fillna(method='ffill')
     return data
@@ -48,46 +68,56 @@ def create_source_df(df):
     df = df.dropna()
     source = ColumnDataSource(df)
     source.add(df['Interval|"ms"|0|0|1'], name='Time')
+    print(source)
+    print(df)
     return source, df
+
+def create_filtered_source_df(df):
+    df.loc[df[lat] == 0, lat] = np.nan
+    df.loc[df[long] == 0, long] = np.nan
+    df[lat] = -df[lat]
+    df[long] = -df[long]
+    df = df.dropna()
+
+
 
 
 def plot_rcprodata(source, df, filename):
-    # List of headers that correspond to each subteams data
-    SUSPENSION = [
-        'RearRight|""|0.0|5.0|50',
-        'RearLeft|""|0.0|5.0|50',
-        'FrontLeft|""|0.0|5.0|50',
-        'FrontRight|""|0.0|5.0|50'
-    ]
-    POWERTRAIN = [
-        'EngineTemp|"C"|0|200|1',
-        'OilPressure|"psi"|0.0|200.0|50',
-        'OilTemp|"F"|0|300|1',
-        'FuelTemp|"C"|0|1024|1',
-    ]
-    ACCELERATION = [
-        'AccelX|"G"|-3.0|3.0|25',
-        'AccelY|"G"|-3.0|3.0|25',
-        'AccelZ|"G"|-3.0|3.0|25'
-    ]
+    global SUSPENSION, POWERTRAIN, ACCELERATION
 
-    #Creating figures for all plots
-    susp = create_figure(filename, 'Suspension_{}')
-    powertrain = create_figure(filename, 'Powertrain_{}')
-    accel = create_figure(filename, 'Acceleration_{}')
-    speed_p = create_figure(filename, 'Speed_{}')
-    traction = create_figure(filename, 'Traction_{}')
+    # Creating figures for all plots
+    susp = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                  width=700, height=300, title='Suspension',
+                  x_axis_label='Time')
+
+    powertrain = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                        width=700, height=300, title='Powertrain',
+                        x_axis_label='Time')
+
+    accel = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                   width=700, height=300, title='Acceleration',
+                   x_axis_label='Time')
+
+    speed_p = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                     width=700, height=300, title='Speed',
+                     x_axis_label='Time')
+
+    traction = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
+                      width=700, height=300, title='Traction',
+                      x_axis_label='X accel')
 
     colors = itertools.cycle(Category20_20)
 
-    plot_data(susp, colors, source, time, SUSPENSION)
-    plot_data(powertrain, colors, source, time, POWERTRAIN)
-    plot_data(accel, colors, source, time, ACCELERATION)
-    plot_data(speed_p, colors, source, time, speed)
-    coord = plot_coords(df, source, filename, lat, long)
+    # Plotting data to each figure
+    plot_data(susp, colors, source, SUSPENSION)
+    plot_data(powertrain, colors, source, POWERTRAIN)
+    plot_data(accel, colors, source, ACCELERATION)
+    plot_data(speed_p, colors, source, speed)
+    coord = plot_coords(df, source, filename)
     traction.circle(x='AccelX|"G"|-3.0|3.0|25', y='AccelY|"G"|-3.0|3.0|25',
                     source=source, size=3, color='firebrick')
 
+    # Creating hovertools to hover over specific points
     susp_hover = HoverTool()
     powertrain_hover = HoverTool()
     accel_hover = HoverTool()
@@ -128,27 +158,15 @@ def plot_rcprodata(source, df, filename):
     accel.add_tools(accel_hover)
     traction.add_tools(traction_hover)
     speed_p.add_tools(speed_hover)
-    susp.legend.click_policy = 'hide'
-    powertrain.legend.click_policy = 'hide'
+    accel.legend.click_policy = 'mute'
+    susp.legend.click_policy = 'mute'
+    powertrain.legend.click_policy = 'mute'
 
     return susp, powertrain, traction, accel, speed_p, coord
 
 
-def create_figure(filename, title_string):
-
-    if title_string == 'Traction':
-        plot = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
-                           width=700, height=300, title=title_string.format(filename),
-                           x_axis_label='X accel')
-    else:
-        plot = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
-                           width=700, height=300, title=title_string.format(filename),
-                           x_axis_label='Time')
-
-    return plot
-
-
-def plot_data(p, colors, source, time, header_list):
+def plot_data(p, colors, source, header_list):
+    global time
 
     for data_series, color in zip(header_list, colors):
         p.line(x=time, y=data_series,
@@ -159,8 +177,31 @@ def plot_data(p, colors, source, time, header_list):
             name=data_series.split('|')[0])
 
 
-def plot_coords(df, source, filename, lat, long):
+def get_color_from_speed(speed, current_top_speed):
 
+    if speed > hypothetical_max_speed:
+        return 'ff0000', current_top_speed
+    if speed > current_top_speed:
+        current_top_speed = speed
+    ratio = int(round(((2 * speed) / current_top_speed) * 255))
+
+    if (2 * speed) < current_top_speed:
+        r = 'ff'
+        g = hex(ratio).split('x')[-1]
+    elif 2 * speed > current_top_speed:
+        r = hex(255 - ratio).split('x')[-1]
+        g = 'ff'
+    else:
+        r = 'ff'
+        g = 'ff'
+
+    color_value = ''
+    color_value += ('#' + r + g + '00')
+    return color_value, current_top_speed
+
+
+def plot_coords(df, source, filename):
+    global lat, long
     speed = 'Speed|"mph"|0.0|150.0|10'
 
     coord = figure(output_backend="webgl", tools=TOOLS, sizing_mode='scale_both',
@@ -184,7 +225,7 @@ def plot_coords(df, source, filename, lat, long):
     return coord
 
 def plot_all(args):
-    global time
+    global time, ACCELERATION, SUSPENSION, POWERTRAIN, long, lat
 
     for file in os.listdir(r'..\\'):
         if file.endswith('.log'):
@@ -195,11 +236,31 @@ def plot_all(args):
                                                                                                    filename=logfile)
             data_table = create_table(data, filename=logfile)
 
+            # TODO figure out how to do callback function
+            callback = CustomJS(args=dict(source=source), code=""""
+                            var f = slider.value;
+                            console.log(f);
+                        """)
+
+            range_slider = RangeSlider(start=min(df[time]), end=max(df[time]), value=(min(df[time]), max(df[time])),
+                                       step=40, title="Range Slider")
+
+            slider = Slider(start=range_slider.value[0], end=range_slider.value[1], value=range_slider.value[0],
+                            step=4, title="Car Slider", callback=callback)
+
+            callback.args["slider"] = slider
+            callback.args["ACCELERATION"] = ACCELERATION
+            callback.args["time"] = time
+            callback.args["lat"] = lat
+            callback.args["long"] = long
+
+
             # sr_logo = plot_image('..\Schulich Racing.png')
             susp_plot.x_range = pt_plot.x_range = accel_plot.x_range = speed_plot.x_range
 
             save(column(row(column(traction_plot, accel_plot, pt_plot),
-                 column(widgetbox(slider), coord_plot, speed_plot, susp_plot)), data_table),
+                 column(widgetbox(slider, range_slider),
+                 coord_plot, speed_plot, susp_plot)), data_table),
                  filename='{}_{}.html'.format(logfile.split('.')[0], 'plot'))
 
             print('Finished processing')
