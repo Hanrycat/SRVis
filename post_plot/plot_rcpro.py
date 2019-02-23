@@ -72,14 +72,13 @@ def create_source_df(df):
     print(df)
     return source, df
 
+
 def create_filtered_source_df(df):
     df.loc[df[lat] == 0, lat] = np.nan
     df.loc[df[long] == 0, long] = np.nan
     df[lat] = -df[lat]
     df[long] = -df[long]
     df = df.dropna()
-
-
 
 
 def plot_rcprodata(source, df, filename):
@@ -175,29 +174,6 @@ def plot_data(p, colors, source, header_list):
             source=source,
             legend=data_series.split('|')[0],
             name=data_series.split('|')[0])
-
-
-def get_color_from_speed(speed, current_top_speed):
-
-    if speed > hypothetical_max_speed:
-        return 'ff0000', current_top_speed
-    if speed > current_top_speed:
-        current_top_speed = speed
-    ratio = int(round(((2 * speed) / current_top_speed) * 255))
-
-    if (2 * speed) < current_top_speed:
-        r = 'ff'
-        g = hex(ratio).split('x')[-1]
-    elif 2 * speed > current_top_speed:
-        r = hex(255 - ratio).split('x')[-1]
-        g = 'ff'
-    else:
-        r = 'ff'
-        g = 'ff'
-
-    color_value = ''
-    color_value += ('#' + r + g + '00')
-    return color_value, current_top_speed
 
 
 def plot_coords(df, source, filename):
